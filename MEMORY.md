@@ -17,3 +17,21 @@ passwd:github_pat_11AXRJSVA0ySQOzDlztOEr_FJR9LkOncrXYamZIgj45MlceRuoZ6zWnOzKQaxD
 |                                    |                |                     |     |
 
 sglang推理环境最新镜像：https://ascend.github.io/sglang/
+
+
+同步本空间：
+
+# 强制推送已有提交
+env_tools/sync_workspace.sh push
+
+# 自动提交全部改动并强制推送
+env_tools/sync_workspace.sh push --commit -m "sync workspace"
+
+# 强制重置到远端最新
+env_tools/sync_workspace.sh reset
+
+# 同时删除未跟踪文件
+env_tools/sync_workspace.sh reset --clean
+
+# 删除所有未跟踪及忽略文件，但保留凭据
+env_tools/sync_workspace.sh reset --clean-ignored
