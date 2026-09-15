@@ -1,6 +1,11 @@
 git信息
 username:pachi33
 passwd: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
+# 警告：此文件保存明文凭据。脚本会自动把权限收紧为 600。
+# GitHub 的 GIT_PASSWORD 必须填写 Personal Access Token，而不是账户登录密码。
+GIT_USERNAME=pachi-33
+GIT_PASSWORD=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
+
 
 统一工作目录：/home/y00951466
 
