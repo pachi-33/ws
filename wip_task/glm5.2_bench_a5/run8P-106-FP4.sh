@@ -4,10 +4,10 @@ unset HTTPS_PROXY
 unset HTTP_PROXY
 unset ASCEND_LAUNCH_BLOCKING
 
-export ENABLE_PROFILING = 0
-export PROFILING_BS = 24
-export PROFILING_STAGE = "prefill" # "decode" # "prefill"
-export PROFILING_step = 5
+export ENABLE_PROFILING=0
+export PROFILING_BS=24
+export PROFILING_STAGE="prefill" # "decode" # "prefill"
+export PROFILING_step=5
 
 # export PYTHONPATH=/mnt/share/l00951279/sglang/python:$PYTHONPATH
 # export PYTHONPATH=/home/y00951466/sglang-my/python:$PYTHONPATH/
@@ -73,6 +73,8 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --speculative-num-steps 4 \
 --speculative-eagle-topk 1 \
 --speculative-num-draft-tokens 5
+# --dp-size 2 \
+# --enable-dp-attention
 # --speculative-draft-model-quantization modelslim
 # --kv-cache-dtype "fp8_e4m3"
 # --max-total-tokens 327680 \
