@@ -6,11 +6,12 @@ unset ASCEND_LAUNCH_BLOCKING
 
 # export PYTHONPATH=/mnt/share/l00951279/sglang/python:$PYTHONPATH
 # export PYTHONPATH=/home/y00951466/sglang-my/python:$PYTHONPATH/
-export PYTHONPATH=/home/y00951466/sglang-a5-optim/python:$PYTHONPATH/
+# export PYTHONPATH=/home/y00951466/sglang-a5-optim/python:$PYTHONPATH/
+export PYTHONPATH=/home/y00951466/sglang/python:$PYTHONPATH/
 
 export HCCL_CONNECT_TIMEOUT=300
 export HCCL_EXEC_TIMEOUT=300
-export HCCL_BUFFSIZE=600
+export HCCL_BUFFSIZE=1024
 export HCCL_OP_EXPANSION_MODE=""AIV""
 export HCCL_INTRA_PCIE_ENABLE=1
 export HCCL_INTRA_ROCE_ENABLE=0
@@ -27,7 +28,8 @@ export TASK_QUEUE_ENABLE=1
 export STREAMS_PER_DEVICE=32
 
 # MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731
-MODEL_PATH=/home/weights/GLM-5.2-W4A8C8-A5-0731
+# MODEL_PATH=/home/weights/GLM-5.2-W4A8C8-A5-0731
+MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-0713      
 export ASCEND_USE_FIA=1
 export SGLANG_NPU_USE_MLAPO=0
 
@@ -64,7 +66,8 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --speculative-num-steps 4 \
 --speculative-eagle-topk 1 \
 --speculative-num-draft-tokens 5 \
---kv-cache-dtype "fp8_e4m3"
+--speculative-draft-model-quantization unquant
+# --kv-cache-dtype "fp8_e4m3"
 # --max-total-tokens 327680 \
 # --cuda-graph-max-bs-decode 8 \
 # --cuda-graph-max-bs-prefill 8 \
