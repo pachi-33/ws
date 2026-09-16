@@ -29,7 +29,9 @@ export STREAMS_PER_DEVICE=32
 
 # MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731
 # MODEL_PATH=/home/weights/GLM-5.2-W4A8C8-A5-0731
-MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-0713      
+# MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-0713      
+MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy 
+
 export ASCEND_USE_FIA=1
 export SGLANG_NPU_USE_MLAPO=0
 
@@ -65,8 +67,8 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --speculative-algorithm EAGLE \
 --speculative-num-steps 4 \
 --speculative-eagle-topk 1 \
---speculative-num-draft-tokens 5 \
---speculative-draft-model-quantization unquant
+--speculative-num-draft-tokens 5
+# --speculative-draft-model-quantization modelslim
 # --kv-cache-dtype "fp8_e4m3"
 # --max-total-tokens 327680 \
 # --cuda-graph-max-bs-decode 8 \
