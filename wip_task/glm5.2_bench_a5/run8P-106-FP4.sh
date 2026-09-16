@@ -4,6 +4,11 @@ unset HTTPS_PROXY
 unset HTTP_PROXY
 unset ASCEND_LAUNCH_BLOCKING
 
+export ENABLE_PROFILING = 0
+export PROFILING_BS = 24
+export PROFILING_STAGE = "prefill" # "decode" # "prefill"
+export PROFILING_step = 5
+
 # export PYTHONPATH=/mnt/share/l00951279/sglang/python:$PYTHONPATH
 # export PYTHONPATH=/home/y00951466/sglang-my/python:$PYTHONPATH/
 # export PYTHONPATH=/home/y00951466/sglang-a5-optim/python:$PYTHONPATH/
@@ -27,10 +32,10 @@ export PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
 export TASK_QUEUE_ENABLE=1
 export STREAMS_PER_DEVICE=32
 
-# MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731
+MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731
 # MODEL_PATH=/home/weights/GLM-5.2-W4A8C8-A5-0731
 # MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-0713      
-MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy 
+# MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy 
 
 export ASCEND_USE_FIA=1
 export SGLANG_NPU_USE_MLAPO=0
