@@ -35,7 +35,7 @@ export PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
 export TASK_QUEUE_ENABLE=1
 export STREAMS_PER_DEVICE=32
 
-MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731
+MODEL_PATH=/mnt/share/y00951466/GLM-5.2-W4A4C8-mxfp4-A5-0731-clip
 # MODEL_PATH=/home/weights/GLM-5.2-W4A8C8-A5-0731
 # MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-0713      
 # MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy 
@@ -65,21 +65,29 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --trust-remote-code \
 --attention-backend ascend \
 --device npu \
---watchdog-timeout 9000 \
 --max-running-requests 24 \
 --mem-fraction-static 0.85 \
 --quantization modelslim \
 --max-prefill-tokens 2048000 \
 --chunked-prefill-size 32768 \
 --enable-metrics \
+--dp-size 2 \
+--enable-dp-attention \
 --speculative-algorithm EAGLE \
 --speculative-num-steps 4 \
 --speculative-eagle-topk 1 \
 --speculative-num-draft-tokens 5 \
---dp-size 2 \
---enable-dp-attention
+--watchdog-timeout 60 \
+--crash-dump-folder /home/y00951466/logs/sglang_crash_dump \
+--enable-dp-attention-local-control-broadcast
+# --disable-overlap-schedule # exp1
 # --speculative-draft-model-quantization modelslim
 # --kv-cache-dtype "fp8_e4m3"
 # --max-total-tokens 327680 \
 # --cuda-graph-max-bs-decode 8 \
 # --cuda-graph-max-bs-prefill 8 \
+
+# --speculative-algorithm EAGLE \
+# --speculative-num-steps 4 \
+# --speculative-eagle-topk 1 \
+# --speculative-num-draft-tokens 5 \

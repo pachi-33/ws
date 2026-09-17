@@ -35,8 +35,8 @@ safetensors + torch（重写分片时使用，需在含这两个库的环境运�
 """
 
 # ==================== 手动填写区域 ====================
-SRC_MODEL_PATH = r"/home/litmei/workspace/weights/demo/src"
-DST_MODEL_PATH = r"/home/litmei/workspace/weights/demo/dst"
+SRC_MODEL_PATH = r"/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731"
+DST_MODEL_PATH = r"/mnt/share/y00951466/GLM-5.2-W4A4C8-mxfp4-A5-0731-clip"
 DST_LAYERS = 10
 SCRIPT_MODE = "init" # "update"
 # =====================================================

@@ -1,0 +1,323 @@
+目前问题已经定位到：DP Attention 的 MLP batch 同步 collective 因控制消息未覆盖空闲 DP，导致部分 rank 未进入同一次 all_gather_into_tensor，最终死锁。
+
+开启：
+
+--enable-dp-attention-local-control-broadcast
+
+后问题消失，是对这一结论的强证据。
+
+一、问题结论
+
+你的配置包含：
+
+TP=4
+DP=2
+DP Attention
+EAGLE/MTP
+
+可以理解为：
+
+Rank	DP 组	Attention TP rank
+TP0	DP0	0
+TP1	DP0	1
+TP2	DP1	0
+TP3	DP1	1
+
+当一个请求只调度到 DP0 时：
+
+DP0 有真实 batch；
+DP1 没有请求，但仍应以 local_batch=None 的方式参与 MLP 元信息同步；
+TP0～TP3 必须按照完全相同的顺序调用 collective。
+
+未开启 local control broadcast 时，DP1 没有被控制面唤醒，或者没有进入相同的 MTP 调度阶段。因此：
+
+DP0 TP0/TP1：进入 all_gather
+DP1 TP2/TP3：没有进入，或者进入了另一个 collective
+DP0 TP0/TP1：永久等待
+
+开启 local control broadcast 后，空闲 DP 也收到调度控制，进入同步并提交 zero-token 信息，因此 collective 完成。
+
+二、目前精确定位到的代码
+1. 直接阻塞位置
+
+文件：
+
+python/sglang/srt/managers/scheduler_components/dp_attn.py
+
+第 160 行：
+
+torch.distributed.all_gather_into_tensor(
+    global_info_tensor.flatten(),
+    local_info_tensor,
+    group=group,
+)
+
+watchdog/py-spy 栈为：
+
+c10d::Work::wait
+└─ all_gather_into_tensor
+   └─ MLPSyncBatchInfo.all_gather                  dp_attn.py:160
+      └─ prepare_mlp_sync_batch_raw                dp_attn.py:343
+         └─ prepare_mlp_sync_batch                 dp_attn.py:406
+            └─ maybe_prepare_mlp_sync_batch        dp_attn.py:435
+               └─ Scheduler.get_next_batch_to_run
+
+因此这是 collective 等待，不是算子执行慢。
+
+2. collective group 的选择
+
+代码位于第 303～318 行：
+
+use_world_group = world_dp_gather_enabled()
+
+if use_world_group:
+    group = torch.distributed.group.WORLD
+elif len(offload_tags) == 0 and (
+    disable_overlap_schedule
+    or envs.SGLANG_NCCL_ALL_GATHER_IN_OVERLAP_SCHEDULER_SYNC_BATCH.get()
+):
+    group = tp_group.device_group
+else:
+    group = tp_group.cpu_group
+
+因为你的栈卡在第 160 行，而不是第 152 行的 all_reduce，可以确定：
+
+use_world_group == False
+
+实际使用的是：
+
+tp_group.device_group
+
+或者：
+
+tp_group.cpu_group
+
+无论使用 CPU 还是 NPU backend，参与 group 的所有 rank 都必须调用同一个 collective。
+
+3. 空闲 DP 的正常逻辑
+
+第 238～250 行已经支持 local_batch=None：
+
+if (
+    local_batch is None
+    or local_batch.forward_mode.is_prebuilt()
+    or local_batch.forward_mode.is_idle()
+):
+    num_tokens = 0
+
+这说明设计上空闲 DP 不需要真实请求，也应该进入 all-gather，只是提交：
+
+num_tokens=0
+
+collective 完成后，代码才检查其他 DP 是否有请求：
+
+need_idle_batch = max(mlp_sync_info.global_num_tokens) > 0
+
+然后为空闲 DP 创建 batch：
+
+if local_batch is None:
+    batch_to_gather = local_batch = get_idle_batch()
+
+正常流程应该是：
+
+空闲 DP 以 local_batch=None 进入 all-gather
+→ 获知其他 DP 有 token
+→ 创建 idle batch
+→ 参与后续全局 MLP
+
+因此 idle batch 创建在 all-gather 后并不是错误。真正的问题是：空闲 DP 根本没有进入该函数。
+
+4. 最值得怀疑的门控代码
+
+第 421～435 行：
+
+def maybe_prepare_mlp_sync_batch(
+    self,
+    batch: Optional[ScheduleBatch],
+    need_sync: Optional[bool] = None,
+):
+    if need_sync if need_sync is not None else self.get_require_mlp_sync():
+        batch = self.prepare_mlp_sync_batch(batch)
+    return batch
+
+风险点是：
+
+need_sync if need_sync is not None else self.get_require_mlp_sync()
+
+如果不同 DP 对这个条件的判断不同：
+
+DP0：True  → 进入 collective
+DP1：False → 跳过 collective
+
+就必然死锁。
+
+另一种可能是，DP1 因为没有收到控制消息，根本没有执行到第 434 行。根据开启 local control broadcast 后问题消失，第二种可能性更高，但仍需要日志确认。
+
+三、为什么 DP+MTP 才容易触发
+
+MTP/EAGLE 会引入更多调度阶段，例如：
+
+target prefill；
+draft extend；
+draft decode；
+target verify；
+prebuilt/idle batch；
+target 与 draft 之间的状态切换。
+
+不同 DP 的本地状态可能是：
+
+DP0：正在执行 target verify/draft extend
+DP1：没有本地请求，处于空闲状态
+
+如果控制消息只发给有请求的 DP，两个 DP 就会走入不同的调度分支。
+
+没有 MTP 时，可能不存在这次额外的 MLP batch 同步，或者 collective 序列更加简单，因此问题不容易暴露。
+
+这也解释了：
+
+关闭 MTP 后正常；
+关闭 Graph 仍死锁；
+关闭 overlap 不能彻底解决；
+warmup 通常成功；
+第一条请求有时成功，后续请求死锁；
+开启 local control broadcast 后恢复。
+
+warmup 往往同时驱动多个 DP，所以启动检查能够成功，但这不能覆盖“只有一个 DP 有真实请求”的情况。
+
+四、local control broadcast 为什么能解决
+
+开启：
+
+--enable-dp-attention-local-control-broadcast
+
+后，DP Attention 的控制消息会覆盖所有相关 DP group，再在组内传播。
+
+预期行为变成：
+
+请求落到 DP0
+    ↓
+DP0 leader 收到真实请求控制
+DP1 leader 收到 idle/sync 控制
+    ↓
+各 DP 组内广播
+    ↓
+TP0～TP3 进入同一次 MLP-sync all-gather
+    ↓
+DP1 提交 num_tokens=0
+    ↓
+all-gather 完成
+    ↓
+DP1 创建 idle batch
+    ↓
+全局 MLP/MTP 正常执行
+
+所以它修复的不是通信性能，而是 collective 的参与者和顺序一致性。
+
+五、还需要确认的行为
+
+虽然参数已经解决了现象，但建议完成以下验证，确认不是偶然绕过。
+
+1. 确认四个 rank 都进入并退出 collective
+
+在第 160 行前后临时加入：
+
+print(
+    f"[MLP_SYNC_ENTER] "
+    f"world_rank={torch.distributed.get_rank()} "
+    f"group_rank={torch.distributed.get_rank(group)} "
+    f"group_size={torch.distributed.get_world_size(group)} "
+    f"backend={torch.distributed.get_backend(group)} "
+    f"device={device} "
+    f"local_batch_none={local_batch is None} "
+    f"num_tokens={self.num_tokens} "
+    f"local_shape={tuple(local_info_tensor.shape)}",
+    flush=True,
+)
+
+torch.distributed.all_gather_into_tensor(
+    global_info_tensor.flatten(),
+    local_info_tensor,
+    group=group,
+)
+
+print(
+    f"[MLP_SYNC_EXIT] "
+    f"world_rank={torch.distributed.get_rank()}",
+    flush=True,
+)
+
+正确输出应满足：
+
+TP0～TP3 的 group_size 一致；
+同一个调度轮次都有 ENTER；
+每个 ENTER 最终都有 EXIT；
+空闲 DP 显示 local_batch_none=True、num_tokens=0。
+2. 确认门控判断一致
+
+把第 434 行临时改成：
+
+require_sync = (
+    need_sync if need_sync is not None else self.get_require_mlp_sync()
+)
+
+print(
+    f"[MLP_SYNC_DECISION] "
+    f"rank={torch.distributed.get_rank()} "
+    f"need_sync_arg={need_sync} "
+    f"require_sync={require_sync} "
+    f"batch_none={batch is None} "
+    f"forward_mode={getattr(batch, 'forward_mode', None)}",
+    flush=True,
+)
+
+if require_sync:
+    batch = self.prepare_mlp_sync_batch(batch)
+
+对比参数关闭和开启时的日志：
+
+关闭参数：哪个 DP 没有打印，或者打印了 require_sync=False；
+开启参数：是否四个 rank 都得到一致的同步决定。
+
+这能区分：
+
+DP1 没有到达调用点；
+DP1 到达了，但门控判断错误。
+3. 抓取参数关闭时 DP1 的栈
+
+死锁时执行：
+
+ps -eo pid,stat,cmd |
+  grep 'sglang::scheduler' |
+  grep -v grep
+
+然后：
+
+py-spy dump --native --pid <DP1_TP2_PID>
+py-spy dump --native --pid <DP1_TP3_PID>
+
+判断方式：
+
+DP1 状态	说明
+停在 event loop/poll	没收到调度控制
+跳过 maybe_prepare_mlp_sync_batch	need_sync 判断不一致
+卡在另一个 collective	MTP collective 顺序错位
+同样卡在第 160 行	检查 group、shape、backend
+4. 使用真正包含 decode 的请求
+
+max_new_tokens=1 通常只需 prefill logits 采样出第一个 token，不一定执行 decode forward。
+
+应至少测试：
+
+curl --noproxy '*' \
+  --max-time 120 \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "text": "hello",
+    "sampling_params": {
+      "max_new_tokens": 32,
+      "temperature": 0
+    }
+  }' \
+  http://127.0.0.1:8818/generate
+
+日志应能看到真正的 Decode batch。
