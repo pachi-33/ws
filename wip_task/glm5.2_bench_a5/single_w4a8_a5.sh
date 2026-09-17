@@ -16,8 +16,12 @@ unset ASCEND_LAUNCH_BLOCKING
 source /usr/local/Ascend/ascend-toolkit/set_env.sh
 source /usr/local/Ascend/nnal/atb/set_env.sh
 
+export ENABLE_PROFILING=0
+export PROFILING_BS=24
+export PROFILING_STAGE="prefill" # "decode" # "prefill"
+export PROFILING_step=5
 
-# export ASCEND_LAUNCH_BLOCKING=1
+export ASCEND_LAUNCH_BLOCKING=1
 
 # export SGLANG_DEEPEP_NUM_MAX_DISPATCH_TOKENS_PER_RANK=1024
 
@@ -34,7 +38,9 @@ export HCCL_IF_BASE_PORT=50000
 export TRANSFORMERS_VERBOSITY=error
 
 # MODEL_PATH=/home/weights/GLM-5.2-W4A8C8-A5-0731
-MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-0713      
+# MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-0713      
+MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731
+
 export SGLANG_NPU_PROFILING=0
 export SGLANG_NPU_PROFILING_BS=16
 # export PYTHONPATH=/home/y00951466/sglang-my/python:$PYTHONPATH/
@@ -66,8 +72,8 @@ python3 -m sglang.launch_server \
         --moe-a2a-backend deepep --deepep-mode auto \
         --load-balance-method round_robin \
         --device npu --host 127.0.0.1 --port 8818 \
-	--speculative-algorithm NEXTN --speculative-num-steps 4 --speculative-eagle-topk 1 --speculative-num-draft-tokens 5 \
-	--speculative-draft-model-quantization modelslim
+	--speculative-algorithm NEXTN --speculative-num-steps 4 --speculative-eagle-topk 1 --speculative-num-draft-tokens 5
+	# --speculative-draft-model-quantization modelslim
         # --cuda-graph-bs-decode 8 \
         # --cuda-graph-bs-prefill 8 \
         # --max-prefill-tokens 32768 \
