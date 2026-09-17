@@ -7,7 +7,7 @@ unset ASCEND_LAUNCH_BLOCKING
 export ENABLE_PROFILING=1
 export PROFILING_BS=5
 export PROFILING_STAGE="decode" # "decode" # "prefill"
-export PROFILING_step=5
+export PROFILING_step=10
 
 # export PYTHONPATH=/mnt/share/l00951279/sglang/python:$PYTHONPATH
 # export PYTHONPATH=/home/y00951466/sglang-my/python:$PYTHONPATH/
