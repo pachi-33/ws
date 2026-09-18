@@ -1,0 +1,490 @@
+================= [DEBUG] 决定是否打印profiling=================================
+[2026-09-18 09:29:42 ATTN_CP0 TP0 EP0] get env ENABLE_PROFILING = 0
+[2026-09-18 09:29:42] Engine startup timings (s): load_weight=13.20, kv_cache_allocation=1.62, scheduler_e2e=39.52, cuda_graph={prefill=0.00, decode=0.00, target_verify=2.55, draft_prefill=0.00, draft_decode=0.97, draft_extend=0.93}, tokenizer_e2e=53.42
+[2026-09-18 09:29:42 ATTN_CP0 TP0 EP0] get env PROFILING_BS = 5
+[2026-09-18 09:29:42 ATTN_CP0 TP0 EP0] get env PROFILING_STAGE = decode
+[2026-09-18 09:29:42 ATTN_CP0 TP0 EP0] get env PROFILING_step = 5
+[2026-09-18 09:29:42] INFO:     Started server process [81239]
+[2026-09-18 09:29:42] INFO:     Waiting for application startup.
+[2026-09-18 09:29:42] Using default chat sampling params from model generation config: {'temperature': 1.0, 'top_p': 0.95}
+[2026-09-18 09:29:42] INFO:     Application startup complete.
+[2026-09-18 09:29:42] INFO:     Uvicorn running on http://127.0.0.1:8818 (Press CTRL+C to quit)
+[2026-09-18 09:29:43] INFO:     127.0.0.1:50242 - "GET /model_info HTTP/1.1" 200 OK
+[2026-09-18 09:29:43 ATTN_CP0 TP0 EP0] get env HOSTNAME = worker-103
+[2026-09-18 09:29:43 ATTN_CP2 TP2 EP2] get env HOSTNAME = worker-103
+[2026-09-18 09:29:43 ATTN_CP1 TP1 EP1] get env HOSTNAME = worker-103
+[2026-09-18 09:29:43 ATTN_CP3 TP3 EP3] get env HOSTNAME = worker-103
+[2026-09-18 09:29:43 ATTN_CP0 TP0 EP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 63.92
+[2026-09-18 09:29:43 ATTN_CP2 TP2 EP2] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 21.01
+[2026-09-18 09:29:43 ATTN_CP1 TP1 EP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 21.02
+[2026-09-18 09:29:43 ATTN_CP3 TP3 EP3] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 21.36
+[2026-09-18 09:29:43] INFO:     127.0.0.1:50248 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 09:29:43] The server is fired up and ready to roll!
+[2026-09-18 09:29:51] INFO:     127.0.0.1:41462 - "GET /server_info HTTP/1.1" 200 OK
+[2026-09-18 09:29:51 ATTN_CP1 TP1 EP1] Cache flushed successfully!
+[2026-09-18 09:29:51 ATTN_CP0 TP0 EP0] Cache flushed successfully!
+[2026-09-18 09:29:51] INFO:     127.0.0.1:41470 - "POST /flush_cache?timeout=60 HTTP/1.1" 200 OK
+[2026-09-18 09:29:51 ATTN_CP3 TP3 EP3] Cache flushed successfully!
+[2026-09-18 09:29:51 ATTN_CP2 TP2 EP2] Cache flushed successfully!
+/home/y00951466/sglang/python/sglang/srt/entrypoints/http_server.py:450: FastAPIDeprecationWarning: ORJSONResponse is deprecated, FastAPI now serializes data directly to JSON bytes via Pydantic when a return type or response model is set, which is faster and doesn't need a custom response class. Read more in the FastAPI docs: https://fastapi.tiangolo.com/advanced/custom-response/#orjson-or-response-model and https://fastapi.tiangolo.com/tutorial/response-model/
+  return await original_handler(ORJSONRequest(request.scope, request.receive))
+[2026-09-18 09:30:01] INFO:     127.0.0.1:43032 - "GET /v1/models HTTP/1.1" 200 OK
+[2026-09-18 09:30:02] INFO:     127.0.0.1:43042 - "GET /model_info HTTP/1.1" 200 OK
+[2026-09-18 09:30:04] INFO:     127.0.0.1:43050 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 09:30:05 ATTN_CP3 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1334, in forward_batch_generation
+    batch_output = self.target_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/tp_worker.py", line 596, in forward_batch_generation
+    out = self.model_runner.forward(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/model_runner.py", line 1523, in forward
+    output = self._forward_raw(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/model_runner.py", line 1715, in _forward_raw
+    ret = self.eager_runner.execute(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/eager_runner.py", line 206, in execute
+    return self._execute_extend(forward_batch, pp_proxy_tensors)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/eager_runner.py", line 341, in _execute_extend
+    ret = model_runner.model.forward(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 3530, in forward
+    hidden_states = self.model(
+                    ^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 3260, in forward
+    hidden_states, residual, topk_indices = layer(
+                                            ^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 2928, in forward
+    hidden_states = self.mlp(
+                    ^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 1120, in forward
+    return self.forward_deepep(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 1718, in forward_deepep
+    final_hidden_states = self.experts(
+                          ^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/ep_moe/layer.py", line 248, in forward
+    return self.forward_impl(hidden_states, topk_output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/ep_moe/layer.py", line 257, in forward_impl
+    return super().forward_impl(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/fused_moe_triton/layer.py", line 1472, in forward_impl
+    dispatch_output = self.dispatcher.dispatch(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/batch_overlap/two_batch_overlap.py", line 1106, in dispatch
+    return self._execute("dispatch", **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/batch_overlap/two_batch_overlap.py", line 1103, in _execute
+    return getattr(self._inners[tbo_subbatch_index or 0], name)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 986, in dispatch
+    ret = self.dispatch_b()
+          ^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 1005, in dispatch_b
+    return self._get_impl().dispatch_b(*inner_state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 576, in dispatch_b
+    ) = self._dispatch_core(hidden_states, topk_ids, topk_weights, previous_event)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 606, in _dispatch_core
+    ) = buffer.get_dispatch_layout(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/deep_ep/buffer.py", line 248, in get_dispatch_layout
+    return self.normal_strategy.get_dispatch_layout(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/deep_ep/strategies/normal_strategy.py", line 62, in get_dispatch_layout
+    ) = self.runtime.get_dispatch_layout(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Failed: Assertion error /__w/sgl-kernel-npu/sgl-kernel-npu/csrc/deepep/deep_ep.cpp:107 error message or error code is 'topk_idx.size(0) <= round * per_round_tokens'
+
+[2026-09-18 09:30:05] SIGQUIT received. signum=None, frame=None. It usually means one child failed.
+[2026-09-18 09:30:05] Sleeping 5 seconds before crash diagnostics to let GPU activity settle.
+[2026-09-18 09:30:05 ATTN_CP1 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1334, in forward_batch_generation
+    batch_output = self.target_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/tp_worker.py", line 596, in forward_batch_generation
+    out = self.model_runner.forward(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/model_runner.py", line 1523, in forward
+    output = self._forward_raw(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/model_runner.py", line 1715, in _forward_raw
+    ret = self.eager_runner.execute(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/eager_runner.py", line 206, in execute
+    return self._execute_extend(forward_batch, pp_proxy_tensors)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/eager_runner.py", line 341, in _execute_extend
+    ret = model_runner.model.forward(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 3530, in forward
+    hidden_states = self.model(
+                    ^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 3260, in forward
+    hidden_states, residual, topk_indices = layer(
+                                            ^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 2928, in forward
+    hidden_states = self.mlp(
+                    ^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 1120, in forward
+    return self.forward_deepep(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 1718, in forward_deepep
+    final_hidden_states = self.experts(
+                          ^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/ep_moe/layer.py", line 248, in forward
+    return self.forward_impl(hidden_states, topk_output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/ep_moe/layer.py", line 257, in forward_impl
+    return super().forward_impl(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/fused_moe_triton/layer.py", line 1472, in forward_impl
+    dispatch_output = self.dispatcher.dispatch(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/batch_overlap/two_batch_overlap.py", line 1106, in dispatch
+    return self._execute("dispatch", **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/batch_overlap/two_batch_overlap.py", line 1103, in _execute
+    return getattr(self._inners[tbo_subbatch_index or 0], name)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 986, in dispatch
+    ret = self.dispatch_b()
+          ^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 1005, in dispatch_b
+    return self._get_impl().dispatch_b(*inner_state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 576, in dispatch_b
+    ) = self._dispatch_core(hidden_states, topk_ids, topk_weights, previous_event)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 606, in _dispatch_core
+    ) = buffer.get_dispatch_layout(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/deep_ep/buffer.py", line 248, in get_dispatch_layout
+    return self.normal_strategy.get_dispatch_layout(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/deep_ep/strategies/normal_strategy.py", line 62, in get_dispatch_layout
+    ) = self.runtime.get_dispatch_layout(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Failed: Assertion error /__w/sgl-kernel-npu/sgl-kernel-npu/csrc/deepep/deep_ep.cpp:107 error message or error code is 'topk_idx.size(0) <= round * per_round_tokens'
+
+[2026-09-18 09:30:05 ATTN_CP2 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1334, in forward_batch_generation
+    batch_output = self.target_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/tp_worker.py", line 596, in forward_batch_generation
+    out = self.model_runner.forward(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/model_runner.py", line 1523, in forward
+    output = self._forward_raw(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/model_runner.py", line 1715, in _forward_raw
+    ret = self.eager_runner.execute(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/eager_runner.py", line 206, in execute
+    return self._execute_extend(forward_batch, pp_proxy_tensors)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/eager_runner.py", line 341, in _execute_extend
+    ret = model_runner.model.forward(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 3530, in forward
+    hidden_states = self.model(
+                    ^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 3260, in forward
+    hidden_states, residual, topk_indices = layer(
+                                            ^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 2928, in forward
+    hidden_states = self.mlp(
+                    ^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 1120, in forward
+    return self.forward_deepep(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 1718, in forward_deepep
+    final_hidden_states = self.experts(
+                          ^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/ep_moe/layer.py", line 248, in forward
+    return self.forward_impl(hidden_states, topk_output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/ep_moe/layer.py", line 257, in forward_impl
+    return super().forward_impl(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/fused_moe_triton/layer.py", line 1472, in forward_impl
+    dispatch_output = self.dispatcher.dispatch(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/batch_overlap/two_batch_overlap.py", line 1106, in dispatch
+    return self._execute("dispatch", **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/batch_overlap/two_batch_overlap.py", line 1103, in _execute
+    return getattr(self._inners[tbo_subbatch_index or 0], name)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 986, in dispatch
+    ret = self.dispatch_b()
+          ^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 1005, in dispatch_b
+    return self._get_impl().dispatch_b(*inner_state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 576, in dispatch_b
+    ) = self._dispatch_core(hidden_states, topk_ids, topk_weights, previous_event)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 606, in _dispatch_core
+    ) = buffer.get_dispatch_layout(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/deep_ep/buffer.py", line 248, in get_dispatch_layout
+    return self.normal_strategy.get_dispatch_layout(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/deep_ep/strategies/normal_strategy.py", line 62, in get_dispatch_layout
+    ) = self.runtime.get_dispatch_layout(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Failed: Assertion error /__w/sgl-kernel-npu/sgl-kernel-npu/csrc/deepep/deep_ep.cpp:107 error message or error code is 'topk_idx.size(0) <= round * per_round_tokens'
+
+[2026-09-18 09:30:05 ATTN_CP0 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1334, in forward_batch_generation
+    batch_output = self.target_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/tp_worker.py", line 596, in forward_batch_generation
+    out = self.model_runner.forward(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/model_runner.py", line 1523, in forward
+    output = self._forward_raw(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/model_runner.py", line 1715, in _forward_raw
+    ret = self.eager_runner.execute(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/eager_runner.py", line 206, in execute
+    return self._execute_extend(forward_batch, pp_proxy_tensors)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/eager_runner.py", line 341, in _execute_extend
+    ret = model_runner.model.forward(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 3530, in forward
+    hidden_states = self.model(
+                    ^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 3260, in forward
+    hidden_states, residual, topk_indices = layer(
+                                            ^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 2928, in forward
+    hidden_states = self.mlp(
+                    ^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 1120, in forward
+    return self.forward_deepep(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/models/deepseek_v2.py", line 1718, in forward_deepep
+    final_hidden_states = self.experts(
+                          ^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/ep_moe/layer.py", line 248, in forward
+    return self.forward_impl(hidden_states, topk_output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/ep_moe/layer.py", line 257, in forward_impl
+    return super().forward_impl(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/fused_moe_triton/layer.py", line 1472, in forward_impl
+    dispatch_output = self.dispatcher.dispatch(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/batch_overlap/two_batch_overlap.py", line 1106, in dispatch
+    return self._execute("dispatch", **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/batch_overlap/two_batch_overlap.py", line 1103, in _execute
+    return getattr(self._inners[tbo_subbatch_index or 0], name)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 986, in dispatch
+    ret = self.dispatch_b()
+          ^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 1005, in dispatch_b
+    return self._get_impl().dispatch_b(*inner_state)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 576, in dispatch_b
+    ) = self._dispatch_core(hidden_states, topk_ids, topk_weights, previous_event)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/layers/moe/token_dispatcher/deepep.py", line 606, in _dispatch_core
+    ) = buffer.get_dispatch_layout(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/deep_ep/buffer.py", line 248, in get_dispatch_layout
+    return self.normal_strategy.get_dispatch_layout(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/deep_ep/strategies/normal_strategy.py", line 62, in get_dispatch_layout
+    ) = self.runtime.get_dispatch_layout(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Failed: Assertion error /__w/sgl-kernel-npu/sgl-kernel-npu/csrc/deepep/deep_ep.cpp:107 error message or error code is 'topk_idx.size(0) <= round * per_round_tokens'

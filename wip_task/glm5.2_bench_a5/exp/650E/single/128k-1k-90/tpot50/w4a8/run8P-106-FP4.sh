@@ -8,6 +8,9 @@ export ASCEND_RT_VISIBLE_DEVICES=4,5,6,7
 
 export ASCEND_LAUNCH_BLOCKING=1
 
+# export ASCEND_SLOG_PRINT_TO_STDOUT=0 #日志打屏, 可选
+# export ASCEND_GLOBAL_LOG_LEVEL=1 #日志级别常用 1 INFO级别; 3 ERROR级别
+
 export ENABLE_PROFILING=0
 export PROFILING_BS=5
 export PROFILING_STAGE="decode" # "decode" # "prefill"
@@ -20,7 +23,7 @@ export PYTHONPATH=/home/y00951466/sglang/python:$PYTHONPATH/
 
 export HCCL_CONNECT_TIMEOUT=300
 export HCCL_EXEC_TIMEOUT=300
-export HCCL_BUFFSIZE=1024
+export HCCL_BUFFSIZE=2048
 export HCCL_OP_EXPANSION_MODE=""AIV""
 export HCCL_INTRA_PCIE_ENABLE=1
 export HCCL_INTRA_ROCE_ENABLE=0
@@ -98,11 +101,10 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --enable-hierarchical-cache \
 --hicache-io-backend kernel_ascend \
 --enable-cache-report \
---hicache-size 60
-
-# --moe-dense-tp-size 1 \
-# --moe-a2a-backend deepep \
-# --deepep-mode auto \
+--hicache-size 60 \
+--moe-dense-tp-size 1 \
+--moe-a2a-backend deepep \
+--deepep-mode auto
 
 # --dp-size 8 \
 # --enable-dp-attention
