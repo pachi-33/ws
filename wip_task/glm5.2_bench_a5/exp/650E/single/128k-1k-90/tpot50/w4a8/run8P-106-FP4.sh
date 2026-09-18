@@ -86,7 +86,7 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --chunked-prefill-size 16384 \
 --enable-metrics \
 --kv-cache-dtype "fp8_e4m3" \
---cuda-graph-bs 1 2 3 4 5 6 \
+--cuda-graph-bs 1 2 3 4 5 6 7 8 \
 --enable-nsa-prefill-context-parallel \
 --dsa-prefill-cp-mode in-seq-split \
 --attn-cp-size 4 \
