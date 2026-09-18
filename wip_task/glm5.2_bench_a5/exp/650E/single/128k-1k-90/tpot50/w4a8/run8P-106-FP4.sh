@@ -101,9 +101,10 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --enable-hierarchical-cache \
 --hicache-io-backend kernel_ascend \
 --enable-cache-report \
---hicache-size 60
-
-
+--hicache-size 60 \
+--enable-nsa-prefill-context-parallel \
+--dsa-prefill-cp-mode in-seq-split \
+--attn-cp-size 4
 
 # --moe-dense-tp-size 1 \
 # --moe-a2a-backend deepep \
