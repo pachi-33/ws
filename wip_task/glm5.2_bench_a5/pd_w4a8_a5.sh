@@ -17,17 +17,17 @@ unset HTTPS_PROXY
 unset HTTP_PROXY
 unset ASCEND_LAUNCH_BLOCKING
 
-# pkill -9 python  2>/dev/null || true
-# pkill -9 sglang 2>/dev/null || true
-# pkill -9 VLLM   2>/dev/null || true
+pkill -9 python  2>/dev/null || true
+pkill -9 sglang 2>/dev/null || true
+pkill -9 VLLM   2>/dev/null || true
 
 # ================================================================
 # Environment
 # ================================================================
-export PYTHONPATH=/mnt/share/chenxu/codes/sglang/python:$PYTHONPATH
+export PYTHONPATH=/home/y00951466/sglang/python:$PYTHONPATH
 # export PYTHONPATH=/mnt/share/lws/sglang_opt/python:$PYTHONPATH
 
-source /mnt/share/chenxu/SFA/vendors/custom_transformer/bin/set_env.bash
+# source /mnt/share/chenxu/SFA/vendors/custom_transformer/bin/set_env.bash
 source /usr/local/memfabric_hybrid/set_env.sh
 
 export HCCL_CONNECT_TIMEOUT=300
@@ -72,7 +72,7 @@ export MF_HYBM_USE_VMM_SEGMENT=1
 export ASCEND_MF_TRANSFER_PROTOCOL="device_urma"
 
 # P 节点作为 MemFabric Store
-export ASCEND_MF_STORE_URL="tcp://141.61.94.103:31001"
+export ASCEND_MF_STORE_URL="tcp://141.61.73.103:31001"
 export ASCEND_MF_LOG_LEVEL=3
 
 unset HCCL_IF_IP 2>/dev/null || true
@@ -82,7 +82,7 @@ unset RANK_TABLE_FILE 2>/dev/null || true
 # ================================================================
 # Model Config
 # ================================================================
-MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W8A8C8-mxfp8
+MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy 
 SERVED_MODEL_NAME=${MODEL_PATH}
 
 # ================================================================
@@ -104,7 +104,7 @@ SERVED_MODEL_NAME=${MODEL_PATH}
 
 # Prefill: 1 node / 8 NPU
 P_IPS=(
-  "141.61.94.103"
+  "141.61.73.103"
 )
 
 P_IFS=(
@@ -113,7 +113,7 @@ P_IFS=(
 
 # Decode: 1 node / 8 NPU
 D_IPS=(
-  "141.61.94.111"
+  "141.61.73.105"
 )
 
 D_IFS=(
@@ -163,7 +163,7 @@ echo "Local IPs: ${LOCAL_HOST1} ${LOCAL_HOST2}"
 # ================================================================
 # Log directory
 # ================================================================
-LOG_DIR="/mnt/share/chenxu/codes/sglang/logs/run_8p8d_pd_$(date +%Y%m%d_%H%M%S)"
+LOG_DIR="/home/y00951466/sglang/logs/run_8p8d_pd_$(date +%Y%m%d_%H%M%S)"
 mkdir -p "${LOG_DIR}"
 
 echo "[run_8p8d_pd] logs will be saved to ${LOG_DIR}"
@@ -234,7 +234,7 @@ for i in "${!P_IPS[@]}"; do
       --device npu \
       --watchdog-timeout 9000 \
       --max-running-requests 36 \
-      --mem-fraction-static 0.92 \
+      --mem-fraction-static 0.8 \
       --quantization modelslim \
       --max-prefill-tokens 2048000 \
       --chunked-prefill-size 16384 \
@@ -333,7 +333,7 @@ for i in "${!D_IPS[@]}"; do
       --disable-radix-cache \
       --watchdog-timeout 9000 \
       --max-running-requests 192 \
-      --mem-fraction-static 0.965 \
+      --mem-fraction-static 0.8 \
       --quantization modelslim \
       --kv-cache-dtype "fp8_e4m3" \
       --moe-a2a-backend deepep \

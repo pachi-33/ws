@@ -6,7 +6,7 @@ unset ASCEND_LAUNCH_BLOCKING
 
 # export ASCEND_RT_VISIBLE_DEVICES=4,5,6,7
 
-export ASCEND_LAUNCH_BLOCKING=1
+# export ASCEND_LAUNCH_BLOCKING=1
 
 # export ASCEND_GLOBAL_LOG_LEVEL=1
 # export ASCEND_SLOG_PRINT_TO_STDOUT=1
@@ -46,9 +46,10 @@ export STREAMS_PER_DEVICE=32
 # MODEL_PATH=/mnt/share/y00951466/GLM-5.2-W4A4C8-mxfp4-A5-0731-clip
 # MODEL_PATH=/home/weights/GLM-5.2-W4A8C8-A5-0731
 # MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-0713      
-MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy 
 # MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W8A8C8-mxfp8
 # MODEL_PATH=/mnt/share/GLM-5.2-W8A8C8-mxfp8 
+
+MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy 
 
 export ASCEND_USE_FIA=1
 export SGLANG_NPU_USE_MLAPO=0
@@ -83,35 +84,38 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --attention-backend ascend \
 --device npu \
 --watchdog-timeout 9000 \
---max-running-requests 100 \
+--max-running-requests 24 \
 --mem-fraction-static 0.8 \
 --quantization modelslim \
 --max-prefill-tokens 2048000 \
 --chunked-prefill-size 16384 \
 --enable-metrics \
---kv-cache-dtype "fp8_e4m3" \
---cuda-graph-bs 1 2 3 4 5 6 7 8 \
---enable-nsa-prefill-context-parallel \
---dsa-prefill-cp-mode in-seq-split \
---attn-cp-size 8 \
+--cuda-graph-bs 1 2 4 6 8 12 \
 --load-balance-method round_robin \
 --speculative-algorithm EAGLE \
 --speculative-num-steps 4 \
 --speculative-eagle-topk 1 \
 --speculative-num-draft-tokens 5 \
+--moe-dense-tp-size 1 \
+--moe-a2a-backend deepep \
+--deepep-mode auto \
 --speculative-draft-kv-cache-dtype bf16 \
+--kv-cache-dtype "fp8_e4m3" \
 --enable-hierarchical-cache \
 --hicache-io-backend kernel_ascend \
 --enable-cache-report \
---hicache-size 60 \
---moe-dense-tp-size 1 \
---moe-a2a-backend deepep \
---deepep-mode auto
+--hicache-size 60 
+
+# --enable-nsa-prefill-context-parallel \
+# --dsa-prefill-cp-mode in-seq-split \
+# --attn-cp-size 4 \
 
 # --enable-draft-prefetch \
 # --skip-draft-prefetch-seq-lens-cpu-sync \
+
 # --dp-size 8 \
 # --enable-dp-attention
+
 # --kv-cache-dtype "fp8_e4m3"
 # --speculative-draft-model-quantization modelslim
 # --max-total-tokens 327680 \
