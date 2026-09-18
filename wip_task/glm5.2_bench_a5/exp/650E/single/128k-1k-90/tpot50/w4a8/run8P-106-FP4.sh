@@ -58,9 +58,9 @@ export HCCL_HOST_SOCKET_PORT_RANGE=auto
 unset HCCL_SOCKET_IFNAME
 export GLOO_SOCKET_IFNAME=lo
 
-export DEEPEP_NORMAL_LONG_SEQ_ROUND=9
-export DEEPEP_NORMAL_LONG_SEQ_PER_ROUND_TOKENS=8192
-export DEEPEP_NORMAL_COMBINE_ENABLE_LONG_SEQ=1
+# export DEEPEP_NORMAL_LONG_SEQ_ROUND=9
+# export DEEPEP_NORMAL_LONG_SEQ_PER_ROUND_TOKENS=8192
+export DEEPEP_NORMAL_COMBINE_ENABLE_LONG_SEQ=0
 
 unset HCCL_IF_IP 2>/dev/null || true
 unset HCCL_SOCKET_FAMILY 2>/dev/null || true
@@ -83,7 +83,7 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --mem-fraction-static 0.8 \
 --quantization modelslim \
 --max-prefill-tokens 2048000 \
---chunked-prefill-size 65536 \
+--chunked-prefill-size 16384 \
 --enable-metrics \
 --kv-cache-dtype "fp8_e4m3" \
 --cuda-graph-bs 1 2 3 4 5 6 \
