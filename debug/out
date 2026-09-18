@@ -1,0 +1,285 @@
+[2026-09-18 15:17:02 TP0] Prefill batch, #new-seq: 1, #new-token: 16384, #cached-token: 0, token usage: 0.06, #running-req: 0, #queue-req: 0, #pending-token: 120094, npu graph: False, input throughput (token/s): 503.63
+[2026-09-18 15:17:06 TP0] Prefill batch, #new-seq: 1, #new-token: 16384, #cached-token: 0, token usage: 0.09, #running-req: 0, #queue-req: 0, #pending-token: 103710, npu graph: False, input throughput (token/s): 3454.83
+[2026-09-18 15:17:11 TP0] Prefill batch, #new-seq: 1, #new-token: 16384, #cached-token: 0, token usage: 0.13, #running-req: 0, #queue-req: 0, #pending-token: 87326, npu graph: False, input throughput (token/s): 3341.46
+[2026-09-18 15:17:16 TP0] Prefill batch, #new-seq: 1, #new-token: 16384, #cached-token: 0, token usage: 0.16, #running-req: 0, #queue-req: 0, #pending-token: 70942, npu graph: False, input throughput (token/s): 3233.32
+[2026-09-18 15:17:22 TP0] Prefill batch, #new-seq: 1, #new-token: 16384, #cached-token: 0, token usage: 0.19, #running-req: 0, #queue-req: 0, #pending-token: 54558, npu graph: False, input throughput (token/s): 3133.93
+[2026-09-18 15:17:27 TP0] Prefill batch, #new-seq: 1, #new-token: 16384, #cached-token: 0, token usage: 0.22, #running-req: 0, #queue-req: 0, #pending-token: 38174, npu graph: False, input throughput (token/s): 3034.87
+[2026-09-18 15:17:33 TP0] Prefill batch, #new-seq: 1, #new-token: 16384, #cached-token: 0, token usage: 0.25, #running-req: 0, #queue-req: 0, #pending-token: 21790, npu graph: False, input throughput (token/s): 2942.90
+[2026-09-18 15:17:35 TP0] Prefill batch, #new-seq: 1, #new-token: 16384, #cached-token: 0, token usage: 0.26, #running-req: 0, #queue-req: 0, #pending-token: 5406, npu graph: False, input throughput (token/s): 8461.54
+[2026-09-18 15:17:35 TP0] Prefill batch, #new-seq: 1, #new-token: 5504, #cached-token: 0, token usage: 0.26, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 11457.44
+[2026-09-18 15:17:37] INFO:     127.0.0.1:59170 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:37] INFO:     127.0.0.1:59186 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:37 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 136448, token usage: 0.26, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 55.77
+[2026-09-18 15:17:37] INFO:     127.0.0.1:59190 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:38] INFO:     127.0.0.1:59198 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:38] INFO:     127.0.0.1:59214 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:38] INFO:     127.0.0.1:59226 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:39] INFO:     127.0.0.1:59236 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:39] INFO:     127.0.0.1:59246 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:40] INFO:     127.0.0.1:59258 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:40] INFO:     127.0.0.1:59266 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:40] INFO:     127.0.0.1:59282 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:41] INFO:     127.0.0.1:59298 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:41] INFO:     127.0.0.1:59312 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:41] INFO:     127.0.0.1:59320 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:42] INFO:     127.0.0.1:59326 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:42] INFO:     127.0.0.1:59334 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:43] INFO:     127.0.0.1:59336 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:43] INFO:     127.0.0.1:59344 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:43] INFO:     127.0.0.1:59354 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:44] INFO:     127.0.0.1:59370 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:44] INFO:     127.0.0.1:59382 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:44] INFO:     127.0.0.1:59392 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:45] INFO:     127.0.0.1:59394 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:45] INFO:     127.0.0.1:59396 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-18 15:17:48 TP0] Prefill batch, #new-seq: 1, #new-token: 13824, #cached-token: 122752, token usage: 0.32, #running-req: 1, #queue-req: 10, #pending-token: 0, npu graph: False, input throughput (token/s): 1301.66
+[2026-09-18 15:17:54 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 245504, token usage: 0.35, #running-req: 2, #queue-req: 19, #pending-token: 1376387, npu graph: False, input throughput (token/s): 2776.60
+[2026-09-18 15:18:00 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.39, #running-req: 3, #queue-req: 18, #pending-token: 2602575, npu graph: False, input throughput (token/s): 2814.11
+[2026-09-18 15:18:05 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.42, #running-req: 4, #queue-req: 17, #pending-token: 2463514, npu graph: False, input throughput (token/s): 2823.54
+[2026-09-18 15:18:11 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.45, #running-req: 5, #queue-req: 16, #pending-token: 2324393, npu graph: False, input throughput (token/s): 2830.15
+[2026-09-18 15:18:17 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.48, #running-req: 6, #queue-req: 14, #pending-token: 2185330, npu graph: False, input throughput (token/s): 2820.86
+[2026-09-18 15:18:23 TP0] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 245504, token usage: 0.51, #running-req: 7, #queue-req: 13, #pending-token: 1923519, npu graph: False, input throughput (token/s): 2812.83
+[2026-09-18 15:18:29 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.54, #running-req: 9, #queue-req: 12, #pending-token: 1784431, npu graph: False, input throughput (token/s): 2839.82
+[2026-09-18 15:18:34 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.57, #running-req: 10, #queue-req: 11, #pending-token: 1645397, npu graph: False, input throughput (token/s): 2829.28
+[2026-09-18 15:18:40 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.61, #running-req: 11, #queue-req: 10, #pending-token: 1506315, npu graph: False, input throughput (token/s): 2825.50
+[2026-09-18 15:18:46 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.64, #running-req: 12, #queue-req: 8, #pending-token: 1367276, npu graph: False, input throughput (token/s): 2813.22
+[2026-09-18 15:18:52 TP0] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 245504, token usage: 0.67, #running-req: 13, #queue-req: 7, #pending-token: 1105500, npu graph: False, input throughput (token/s): 2808.49
+[2026-09-18 15:18:58 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.70, #running-req: 15, #queue-req: 6, #pending-token: 966401, npu graph: False, input throughput (token/s): 2821.21
+[2026-09-18 15:19:03 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.73, #running-req: 16, #queue-req: 5, #pending-token: 827311, npu graph: False, input throughput (token/s): 2825.11
+[2026-09-18 15:19:05 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 122752, token usage: 0.74, #running-req: 17, #queue-req: 5, #pending-token: 688252, npu graph: False, input throughput (token/s): 8168.88
+[2026-09-18 15:19:06 TP0] Prefill batch, #new-seq: 1, #new-token: 5632, #cached-token: 0, token usage: 0.74, #running-req: 18, #queue-req: 5, #pending-token: 682665, npu graph: False, input throughput (token/s): 66738.18
+[2026-09-18 15:19:07 TP0] Decode batch, #running-req: 19, #token: 387200, token usage: 0.75, accept len: 3.02, accept rate: 0.51, npu graph: True, gen throughput (token/s): 8.86, #queue-req: 5
+[2026-09-18 15:19:11 TP0] Decode batch, #running-req: 19, #token: 390400, token usage: 0.75, accept len: 4.86, accept rate: 0.96, npu graph: True, gen throughput (token/s): 1108.57, #queue-req: 5
+[2026-09-18 15:19:14 TP0] Decode batch, #running-req: 19, #token: 394496, token usage: 0.76, accept len: 4.87, accept rate: 0.97, npu graph: True, gen throughput (token/s): 1126.68, #queue-req: 5
+[2026-09-18 15:19:17 TP0] Decode batch, #running-req: 19, #token: 397952, token usage: 0.77, accept len: 4.91, accept rate: 0.98, npu graph: True, gen throughput (token/s): 1139.54, #queue-req: 5
+[2026-09-18 15:19:21 TP0] Decode batch, #running-req: 19, #token: 401920, token usage: 0.78, accept len: 4.90, accept rate: 0.97, npu graph: True, gen throughput (token/s): 1139.77, #queue-req: 5
+[2026-09-18 15:19:33 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 245504, token usage: 0.81, #running-req: 18, #queue-req: 3, #pending-token: 420809, npu graph: False, input throughput (token/s): 606.38
+[2026-09-18 15:19:33 TP0] Prefill batch, #new-seq: 1, #new-token: 11264, #cached-token: 0, token usage: 0.78, #running-req: 19, #queue-req: 3, #pending-token: 409598, npu graph: False, input throughput (token/s): 158705.60
+[2026-09-18 15:19:38 TP0] Prefill batch, #new-seq: 1, #new-token: 13824, #cached-token: 122752, token usage: 0.66, #running-req: 19, #queue-req: 2, #pending-token: 273063, npu graph: False, input throughput (token/s): 2814.96
+[2026-09-18 15:19:47 TP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 245504, token usage: 0.60, #running-req: 14, #queue-req: 0, #pending-token: 11198, npu graph: False, input throughput (token/s): 1683.05
+[2026-09-18 15:19:47 TP0] Prefill batch, #new-seq: 1, #new-token: 11264, #cached-token: 0, token usage: 0.60, #running-req: 15, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 155967.83
+[2026-09-18 15:19:48 TP0] Decode batch, #running-req: 6, #token: 206336, token usage: 0.40, accept len: 4.69, accept rate: 0.92, npu graph: True, gen throughput (token/s): 111.27, #queue-req: 0
+[2026-09-18 15:19:50 TP0] Decode batch, #running-req: 6, #token: 207744, token usage: 0.40, accept len: 4.60, accept rate: 0.90, npu graph: True, gen throughput (token/s): 489.54, #queue-req: 0
+[2026-09-18 15:19:52 TP0] Decode batch, #running-req: 6, #token: 208640, token usage: 0.40, accept len: 4.90, accept rate: 0.98, npu graph: True, gen throughput (token/s): 523.93, #queue-req: 0
+[2026-09-18 15:19:55 TP0] Decode batch, #running-req: 5, #token: 195072, token usage: 0.38, accept len: 4.98, accept rate: 1.00, npu graph: True, gen throughput (token/s): 478.14, #queue-req: 0
+[2026-09-18 15:19:57 TP0] Decode batch, #running-req: 5, #token: 196224, token usage: 0.38, accept len: 5.00, accept rate: 1.00, npu graph: True, gen throughput (token/s): 469.51, #queue-req: 0
+[2026-09-18 15:19:59 TP0] Decode batch, #running-req: 5, #token: 196864, token usage: 0.38, accept len: 5.00, accept rate: 1.00, npu graph: True, gen throughput (token/s): 468.87, #queue-req: 0
+
+
+
+
+============ Serving Benchmark Result ============
+Backend:                                 sglang    
+Traffic request rate:                    inf       
+Max request concurrency:                 24        
+Successful requests:                     24        
+Benchmark duration (s):                  142.64    
+Total input tokens:                      3276450   
+Total input text tokens:                 3276450   
+Total generated tokens:                  24576     
+Total generated tokens (retokenized):    24573     
+Request throughput (req/s):              0.17      
+Input token throughput (tok/s):          22970.63  
+Output token throughput (tok/s):         172.30    
+Peak output token throughput (tok/s):    1166.00   
+Peak concurrent requests:                24        
+Total token throughput (tok/s):          23142.93  
+Concurrency:                             21.66     
+Accept length:                           4.69      
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   128745.06 
+Median E2E Latency (ms):                 130922.40 
+P90 E2E Latency (ms):                    142413.08 
+P95 E2E Latency (ms):                    142444.82 
+P99 E2E Latency (ms):                    142496.56 
+---------------Time to First Token----------------
+Mean TTFT (ms):                          81855.18  
+Median TTFT (ms):                        89047.16  
+P90 TTFT (ms):                           125032.78 
+P95 TTFT (ms):                           130129.21 
+P99 TTFT (ms):                           130793.98 
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          45.84     
+Median TPOT (ms):                        36.93     
+P90 TPOT (ms):                           98.39     
+P95 TPOT (ms):                           104.61    
+P99 TPOT (ms):                           109.85    
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           45.88     
+Median ITL (ms):                         16.35     
+P90 ITL (ms):                            16.74     
+P95 ITL (ms):                            20.71     
+P99 ITL (ms):                            806.16    
+Max ITL (ms):                            71788.02  
+----------------Cache Hit Details-----------------
+Total prompt tokens:                     3276450   
+Total cached tokens:                     2959744   
+  Device:                                2959744   
+  Host:                                  0         
+Cache hit rate:                          90.3%
+  Device:                                100.0%
+  Host:                                  0.0%
+==================================================
+
+Benchmark summary
+{
+  "files": {
+    "raw_result_jsonl": "./benchmark_results/cache/cache90_in131072_out1024_c24_20260918_151638.jsonl",
+    "console_log": "./benchmark_results/cache/cache90_in131072_out1024_c24_20260918_151638.console.log"
+  },
+  "test_configuration": {
+    "tag": "target_kv_hit_90pct",
+    "backend": "sglang",
+    "dataset_name": "generated-shared-prefix",
+    "target_input_tokens": 131072,
+    "target_output_tokens": 1024,
+    "target_kv_cache_hit_rate_pct": 90,
+    "request_rate_req_s": 1.7976931348623157e+308,
+    "configured_max_concurrency": 24
+  },
+  "completion": {
+    "requested_requests": 24,
+    "completed_requests": 24,
+    "failed_requests": 0,
+    "errors": []
+  },
+  "actual_workload": {
+    "duration_s": 142.63650205999147,
+    "total_input_tokens": 3276450,
+    "total_output_tokens": 24576,
+    "total_output_tokens_retokenized": 24573,
+    "input_tokens_per_request": {
+      "count": 24,
+      "min": 136459,
+      "mean": 136518.75,
+      "p50": 136523,
+      "p90": 136551.7,
+      "p95": 136552.85,
+      "p99": 136559.16,
+      "max": 136561
+    },
+    "output_tokens_per_request": {
+      "count": 24,
+      "min": 1024,
+      "mean": 1024,
+      "p50": 1024,
+      "p90": 1024,
+      "p95": 1024,
+      "p99": 1024,
+      "max": 1024
+    }
+  },
+  "kv_cache": {
+    "target_hit_rate_pct": 90,
+    "actual_aggregate_hit_rate_pct": 90.33,
+    "target_error_percentage_points": 0.3299999999999983,
+    "total_prompt_tokens": 3276450,
+    "total_cached_tokens": 2959744,
+    "device_cached_tokens": 2959744,
+    "host_cached_tokens": 0,
+    "storage_cached_tokens": null,
+    "storage_backend": null,
+    "per_request_hit_rate_pct": {
+      "count": 24,
+      "min": 89.88803538345502,
+      "mean": 90.33399570438858,
+      "p50": 89.91305494312314,
+      "p90": 89.94434901106769,
+      "p95": 89.9537415853147,
+      "p99": 97.67277586374144,
+      "max": 99.97801843520567
+    }
+  },
+  "concurrency": {
+    "configured_client_max": 24,
+    "actual_average_inflight_requests": 21.662628274916987,
+    "approximate_peak_1s_bucket_requests": 24,
+    "server_configured_max_running_requests": 20,
+    "effective_max_running_requests_per_dp": 20
+  },
+  "throughput": {
+    "request_req_s": 0.1682598749505638,
+    "input_token_s": 22970.627803407282,
+    "output_token_s": 172.29811194937733,
+    "total_token_s": 23142.92591535666,
+    "peak_output_token_s": 1166
+  },
+  "latency_ms": {
+    "e2e": {
+      "mean": 128745.0634400011,
+      "median": 130922.40308500186,
+      "std": 9538.13422325735,
+      "p90": 142413.08072800457,
+      "p95": 142444.81693898124,
+      "p99": 142496.55563839828
+    },
+    "ttft": {
+      "mean": 81855.17847916829,
+      "median": 89047.15828501503,
+      "std": 34490.07298008683,
+      "p90": 125032.77808900457,
+      "p95": 130129.20571800786,
+      "p99": 130793.97862340207
+    },
+    "tpot": {
+      "mean": 45.83566467334585,
+      "median": 36.93030837732733,
+      "std": 30.401200130055646,
+      "p90": 98.38859469012242,
+      "p95": 104.6130855332419,
+      "p99": 109.84609048221034
+    },
+    "itl": {
+      "mean": 45.8842469579233,
+      "median": 16.35105999885127,
+      "std": 912.6739763251229,
+      "p90": 16.744444001233205,
+      "p95": 20.708322495920584,
+      "p99": 806.1570240010042,
+      "max": 71788.01635999116
+    }
+  },
+  "tpot_slo": {
+    "limit_20_ms": {
+      "threshold_ms": 20,
+      "eligible_requests": 24,
+      "passed_requests": 3,
+      "pass_rate_pct": 12.5,
+      "request_goodput_req_s": 0.021032484368820475
+    },
+    "limit_50_ms": {
+      "threshold_ms": 50,
+      "eligible_requests": 24,
+      "passed_requests": 18,
+      "pass_rate_pct": 75,
+      "request_goodput_req_s": 0.12619490621292284
+    }
+  },
+  "server": {
+    "version": "0.5.18.dev494+g07821e9d5",
+    "model_path": "/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy",
+    "device": "npu",
+    "dtype": "auto",
+    "quantization": "modelslim",
+    "kv_cache_dtype": "fp8_e4m3",
+    "context_length": null,
+    "max_total_num_tokens": 518016,
+    "max_req_input_len": 518010,
+    "page_size": 128,
+    "mem_fraction_static": 0.85,
+    "memory_usage": null,
+    "tp_size": 8,
+    "pp_size": 1,
+    "dp_size": 1,
+    "ep_size": 1,
+    "enable_dp_attention": false,
+    "disable_radix_cache": false,
+    "radix_eviction_policy": "lru",
+    "chunked_prefill_size": 16384,
+    "max_prefill_tokens": 2048000,
+    "schedule_policy": "fcfs",
+    "attention_backend": "ascend",
+    "prefill_attention_backend": "ascend",
+    "decode_attention_backend": "ascend"
+  }
+}

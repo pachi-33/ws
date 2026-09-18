@@ -35,7 +35,7 @@ REQUEST_RATE="${REQUEST_RATE:-inf}"
 PAGE_SIZE="${PAGE_SIZE:-auto}" #2
 # Backward-compatible precedence:
 # TARGET_KV_HIT_PERCENT > PREFIX_PERCENT > CACHE_MODE > default 90.
-TARGET_KV_HIT_PERCENT=91
+TARGET_KV_HIT_PERCENT=90
 SEED="${SEED:-42}"
 RESULT_DIR="${RESULT_DIR:-./benchmark_results/cache}"
 
