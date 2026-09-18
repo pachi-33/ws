@@ -1,0 +1,174 @@
+[2026-09-18 10:11:23 ATTN_CP1 TP1 EP1] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.04, #running-req: 13, #queue-req: 6, #pending-token: 1097109, npu graph: False, input throughput (token/s): 34909.19
+[2026-09-18 10:11:23 ATTN_CP2 TP2 EP2] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.04, #running-req: 13, #queue-req: 6, #pending-token: 1097109, npu graph: False, input throughput (token/s): 34927.12
+[2026-09-18 10:11:23 ATTN_CP0 TP0 EP0] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.04, #running-req: 15, #queue-req: 5, #pending-token: 827202, npu graph: False, input throughput (token/s): 35614.51
+[2026-09-18 10:11:23 ATTN_CP2 TP2 EP2] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.04, #running-req: 15, #queue-req: 5, #pending-token: 827202, npu graph: False, input throughput (token/s): 35621.71
+[2026-09-18 10:11:23 ATTN_CP1 TP1 EP1] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.04, #running-req: 15, #queue-req: 5, #pending-token: 827202, npu graph: False, input throughput (token/s): 35557.66
+[2026-09-18 10:11:23 ATTN_CP3 TP3 EP3] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.04, #running-req: 15, #queue-req: 5, #pending-token: 827202, npu graph: False, input throughput (token/s): 35348.27
+[2026-09-18 10:11:24 ATTN_CP0 TP0 EP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 126848, token usage: 0.04, #running-req: 17, #queue-req: 3, #pending-token: 684062, npu graph: False, input throughput (token/s): 36042.10
+[2026-09-18 10:11:24 ATTN_CP2 TP2 EP2] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 126848, token usage: 0.04, #running-req: 17, #queue-req: 3, #pending-token: 684062, npu graph: False, input throughput (token/s): 36042.85
+[2026-09-18 10:11:24 ATTN_CP1 TP1 EP1] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 126848, token usage: 0.04, #running-req: 17, #queue-req: 3, #pending-token: 684062, npu graph: False, input throughput (token/s): 36070.96
+[2026-09-18 10:11:24 ATTN_CP3 TP3 EP3] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 126848, token usage: 0.04, #running-req: 17, #queue-req: 3, #pending-token: 684062, npu graph: False, input throughput (token/s): 36237.80
+[2026-09-18 10:11:24 ATTN_CP2 TP2 EP2] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.05, #running-req: 18, #queue-req: 1, #pending-token: 414120, npu graph: False, input throughput (token/s): 34825.41
+[2026-09-18 10:11:24 ATTN_CP1 TP1 EP1] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.05, #running-req: 18, #queue-req: 1, #pending-token: 414120, npu graph: False, input throughput (token/s): 34847.04
+[2026-09-18 10:11:24 ATTN_CP0 TP0 EP0] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.05, #running-req: 18, #queue-req: 1, #pending-token: 414120, npu graph: False, input throughput (token/s): 34784.70
+[2026-09-18 10:11:24 ATTN_CP3 TP3 EP3] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.05, #running-req: 18, #queue-req: 1, #pending-token: 414120, npu graph: False, input throughput (token/s): 34825.05
+[2026-09-18 10:11:25 ATTN_CP0 TP0 EP0] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.05, #running-req: 20, #queue-req: 0, #pending-token: 144130, npu graph: False, input throughput (token/s): 35163.76
+[2026-09-18 10:11:25 ATTN_CP2 TP2 EP2] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.05, #running-req: 20, #queue-req: 0, #pending-token: 144130, npu graph: False, input throughput (token/s): 35080.57
+[2026-09-18 10:11:25 ATTN_CP3 TP3 EP3] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.05, #running-req: 20, #queue-req: 0, #pending-token: 144130, npu graph: False, input throughput (token/s): 35074.17
+[2026-09-18 10:11:25 ATTN_CP1 TP1 EP1] Prefill batch, #new-seq: 3, #new-token: 16384, #cached-token: 253696, token usage: 0.05, #running-req: 20, #queue-req: 0, #pending-token: 144130, npu graph: False, input throughput (token/s): 34482.80
+[2026-09-18 10:11:25 ATTN_CP0 TP0 EP0] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 126848, token usage: 0.05, #running-req: 22, #queue-req: 0, #pending-token: 957, npu graph: False, input throughput (token/s): 111378.70
+[2026-09-18 10:11:25 ATTN_CP3 TP3 EP3] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 126848, token usage: 0.05, #running-req: 22, #queue-req: 0, #pending-token: 957, npu graph: False, input throughput (token/s): 111598.81
+[2026-09-18 10:11:25 ATTN_CP2 TP2 EP2] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 126848, token usage: 0.05, #running-req: 22, #queue-req: 0, #pending-token: 957, npu graph: False, input throughput (token/s): 110197.99
+[2026-09-18 10:11:25 ATTN_CP1 TP1 EP1] Prefill batch, #new-seq: 2, #new-token: 16384, #cached-token: 126848, token usage: 0.05, #running-req: 22, #queue-req: 0, #pending-token: 957, npu graph: False, input throughput (token/s): 115943.39
+[2026-09-18 10:11:43 ATTN_CP0 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1430, in forward_batch_generation
+    self.draft_worker.draft_prefetch(batch, batch_output)
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 907, in draft_prefetch
+    self.cuda_graph_runner.execute(forward_batch)
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 520, in execute
+    bs = self._pad_to_bucket(raw_bs, self.capture_bs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/base_cuda_graph_runner.py", line 143, in _pad_to_bucket
+    assert raw_size <= buckets[-1], (
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: size 24 exceeds max captured bucket 4; can_run_graph should have rejected this batch
+
+[2026-09-18 10:11:43 ATTN_CP3 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1430, in forward_batch_generation
+    self.draft_worker.draft_prefetch(batch, batch_output)
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 907, in draft_prefetch
+    self.cuda_graph_runner.execute(forward_batch)
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 520, in execute
+    bs = self._pad_to_bucket(raw_bs, self.capture_bs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/base_cuda_graph_runner.py", line 143, in _pad_to_bucket
+    assert raw_size <= buckets[-1], (
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: size 24 exceeds max captured bucket 4; can_run_graph should have rejected this batch
+
+[2026-09-18 10:11:43 ATTN_CP2 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1430, in forward_batch_generation
+    self.draft_worker.draft_prefetch(batch, batch_output)
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 907, in draft_prefetch
+    self.cuda_graph_runner.execute(forward_batch)
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 520, in execute
+    bs = self._pad_to_bucket(raw_bs, self.capture_bs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/base_cuda_graph_runner.py", line 143, in _pad_to_bucket
+    assert raw_size <= buckets[-1], (
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: size 24 exceeds max captured bucket 4; can_run_graph should have rejected this batch
+
+[2026-09-18 10:11:43 ATTN_CP1 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1430, in forward_batch_generation
+    self.draft_worker.draft_prefetch(batch, batch_output)
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 907, in draft_prefetch
+    self.cuda_graph_runner.execute(forward_batch)
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 520, in execute
+    bs = self._pad_to_bucket(raw_bs, self.capture_bs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/model_executor/runner/base_cuda_graph_runner.py", line 143, in _pad_to_bucket
+    assert raw_size <= buckets[-1], (
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: size 24 exceeds max captured bucket 4; can_run_graph should have rejected this batch
+
+[2026-09-18 10:11:43] SIGQUIT received. signum=None, frame=None. It usually means one child failed.
+[2026-09-18 10:11:43] Sleeping 5 seconds before crash diagnostics to let GPU activity settle.
+[2026-09-18 10:11:48] Pyspy failed (py-spy dump --native --pid 92451). Error: Error: Failed to find a python interpreter in the .data section
+
+[2026-09-18 10:11:48] Pyspy failed (py-spy dump  --pid 92451). Error: Error: Failed to find a python interpreter in the .data section
+
+[2026-09-18 10:11:48] All pyspy dump attempts failed for PID 92451.
+[2026-09-18 10:11:49] Pyspy failed (py-spy dump --native --pid 92452). Error: Error: Failed to find a python interpreter in the .data section
+
+[2026-09-18 10:11:49] Pyspy failed (py-spy dump  --pid 92452). Error: Error: Failed to find a python interpreter in the .data section
+
+[2026-09-18 10:11:49] All pyspy dump attempts failed for PID 92452.
+[2026-09-18 10:11:49] Pyspy failed (py-spy dump --native --pid 92453). Error: Error: Failed to find a python interpreter in the .data section
+
+[2026-09-18 10:11:49] Pyspy failed (py-spy dump  --pid 92453). Error: Error: Failed to find a python interpreter in the .data section
+
+[2026-09-18 10:11:49] All pyspy dump attempts failed for PID 92453.
+[2026-09-18 10:11:49] Pyspy failed (py-spy dump --native --pid 92454). Error: Error: Failed to find a python interpreter in the .data section
+
+[2026-09-18 10:11:50] Pyspy failed (py-spy dump  --pid 92454). Error: Error: Failed to find a python interpreter in the .data section
+
+[2026-09-18 10:11:50] All pyspy dump attempts failed for PID 92454.
+[2026-09-18 10:11:50] CUDA user-triggered coredump is not enabled. Set CUDA_ENABLE_USER_TRIGGERED_COREDUMP=1 before CUDA initialization.
+[2026-09-18 10:11:50] CUDA coredump pipe not found for PID 92451: /workspace/corepipe.cuda.worker-103.92451. Ensure CUDA_ENABLE_USER_TRIGGERED_COREDUMP=1 was set before this process initialized CUDA.
+[2026-09-18 10:11:50] CUDA coredump pipe not found for PID 92452: /workspace/corepipe.cuda.worker-103.92452. Ensure CUDA_ENABLE_USER_TRIGGERED_COREDUMP=1 was set before this process initialized CUDA.
+[2026-09-18 10:11:50] CUDA coredump pipe not found for PID 92453: /workspace/corepipe.cuda.worker-103.92453. Ensure CUDA_ENABLE_USER_TRIGGERED_COREDUMP=1 was set before this process initialized CUDA.
+[2026-09-18 10:11:50] CUDA coredump pipe not found for PID 92454: /workspace/corepipe.cuda.worker-103.92454. Ensure CUDA_ENABLE_USER_TRIGGERED_COREDUMP=1 was set before this process initialized CUDA.
+[2026-09-18 10:11:50] Waiting 60.0 seconds for CUDA coredumps before exiting.
