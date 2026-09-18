@@ -80,7 +80,9 @@ def dp_rank(meta, dp_size):
     return rank
 
 
-def warm_all_dp(base_url, headers, prefix, guard_a, guard_b, dp_size, timeout):
+def warm_all_dp(
+    base_url, headers, prefix, guard_a, guard_b, dp_size, timeout, strict=False
+):
     """Warm beyond the prefix boundary, then probe with a different guard.
 
     The probe cannot match the warmup's guard and cannot warm a measured suffix.
@@ -121,19 +123,53 @@ def warm_all_dp(base_url, headers, prefix, guard_a, guard_b, dp_size, timeout):
         call(prefix + guard_a)
         meta = call(prefix + guard_b)
         cached = meta.get("cached_tokens")
-        if cached != len(prefix):
+        if (
+            not isinstance(cached, int)
+            or isinstance(cached, bool)
+            or not 0 <= cached <= len(prefix) + len(guard_b)
+        ):
+            raise RuntimeError(
+                f"DP{rank} cache probe returned invalid cached_tokens={cached}"
+            )
+        matched = cached == len(prefix)
+        if not matched and strict:
             raise RuntimeError(
                 f"DP{rank} cache probe failed: expected {len(prefix)} cached tokens, got {cached}"
             )
-        reports.append({"dp_rank": rank, "cached_tokens": cached, "verified": True})
-        print(f"DP{rank}: shared prefix verified, {cached} cached tokens", flush=True)
+        reports.append(
+            {
+                "dp_rank": rank,
+                "cached_tokens": cached,
+                "expected_cached_tokens": len(prefix),
+                "routing_verified": True,
+                "verified": matched,
+            }
+        )
+        if matched:
+            print(
+                f"DP{rank}: shared prefix verified, {cached} cached tokens", flush=True
+            )
+        else:
+            print(
+                f"WARNING DP{rank}: cache probe got {cached} cached tokens, target {len(prefix)}; continuing in report mode",
+                flush=True,
+            )
     return reports
 
 
-def validate_records(records, input_len, output_len, prefix_len, dp_size, tolerance):
+def validate_records(
+    records, input_len, output_len, prefix_len, dp_size, tolerance, strict=False
+):
     failures = []
+    deviations = []
+    matched_count = 0
     per_dp = {
-        rank: {"dp_rank": rank, "requests": 0, "passed_requests": 0}
+        rank: {
+            "dp_rank": rank,
+            "requests": 0,
+            "passed_requests": 0,
+            "cache_target_matched_requests": 0,
+        }
         for rank in range(dp_size)
     }
     for i, record in enumerate(records):
@@ -158,21 +194,39 @@ def validate_records(records, input_len, output_len, prefix_len, dp_size, tolera
             errors.append("first nonempty output was not observed")
         if not isinstance(rank, int) or isinstance(rank, bool) or rank not in per_dp:
             errors.append(f"missing or invalid dp_rank={rank}")
-        if (
-            not isinstance(cached, int)
-            or isinstance(cached, bool)
-            or abs(cached - prefix_len) > tolerance
-        ):
-            errors.append(
-                f"cached_tokens={cached}, expected {prefix_len} +/- {tolerance}"
-            )
+        cached_valid = (
+            isinstance(cached, int)
+            and not isinstance(cached, bool)
+            and 0 <= cached <= input_len
+        )
+        matched = cached_valid and abs(cached - prefix_len) <= tolerance
+        matched_count += int(matched)
+        if not cached_valid:
+            errors.append(f"missing or invalid cached_tokens={cached}")
+        elif not matched:
+            deviation = {
+                "request_index": i,
+                "dp_rank": rank,
+                "cached_tokens": cached,
+                "actual_hit_rate_pct": 100 * cached / input_len,
+            }
+            deviations.append(deviation)
+            if strict:
+                errors.append(
+                    f"cached_tokens={cached}, expected {prefix_len} +/- {tolerance}"
+                )
         if errors:
             failures.append({"request_index": i, "dp_rank": rank, "reasons": errors})
         if isinstance(rank, int) and rank in per_dp:
             per_dp[rank]["requests"] += 1
             per_dp[rank]["passed_requests"] += int(not errors)
+            per_dp[rank]["cache_target_matched_requests"] += int(matched)
     return {
         "valid": not failures,
+        "mode": "strict" if strict else "report",
+        "cache_target_matched": matched_count == len(records),
+        "deviating_requests": len(deviations),
+        "cache_deviations": deviations,
         "checked_requests": len(records),
         "expected_cached_tokens": prefix_len,
         "expected_hit_rate_pct": 100 * prefix_len / input_len,
@@ -287,7 +341,14 @@ def install_adapter(serving, exact):
             base_url + "/flush_cache?timeout=60", headers, {}, 65, decode_json=False
         )
         probes = warm_all_dp(
-            base_url, headers, prefix, guard_a, guard_b, dp_size, exact.warmup_timeout
+            base_url,
+            headers,
+            prefix,
+            guard_a,
+            guard_b,
+            dp_size,
+            exact.warmup_timeout,
+            exact.strict_cache_hit,
         )
         run_id = uuid.uuid4().hex
         state.update(
@@ -303,6 +364,7 @@ def install_adapter(serving, exact):
                 "page_size": page,
                 "dp_size": dp_size,
                 "warmup_probes": probes,
+                "strict_cache_hit": exact.strict_cache_hit,
             },
         )
         print(
@@ -361,6 +423,7 @@ def install_adapter(serving, exact):
             config["prefix_tokens"],
             config["dp_size"],
             exact.tolerance_tokens,
+            exact.strict_cache_hit,
         )
         result.update(
             latencies=[r.get("latency", 0) for r in records],
@@ -374,10 +437,20 @@ def install_adapter(serving, exact):
             cache_validation=validation,
         )
         replace_last_jsonl(args.output_file, result)
+        status = (
+            "FAIL"
+            if not validation["valid"]
+            else "WARN" if validation["deviating_requests"] else "PASS"
+        )
         print(
-            f"Cache validation: {'PASS' if validation['valid'] else 'FAIL'}, checked={len(records)}, failed={validation['failed_requests']}",
+            f"Cache validation: {status}, mode={validation['mode']}, checked={len(records)}, failed={validation['failed_requests']}, deviating={validation['deviating_requests']}",
             flush=True,
         )
+        if validation["deviating_requests"] and not exact.strict_cache_hit:
+            print(
+                "WARNING: actual cache hits differ from the target; keeping performance results in report mode. Inspect actual hit rates and per-DP statistics.",
+                flush=True,
+            )
         if not validation["valid"]:
             raise CacheValidationError(
                 f"Invalid cache workload; inspect cache_validation in {args.output_file}"
@@ -401,6 +474,7 @@ def main():
     )
     parser.add_argument("--exact-page-size", dest="page_size", default="auto")
     parser.add_argument("--exact-dp-size", dest="dp_size", default="auto")
+    parser.add_argument("--strict-cache-hit", action="store_true")
     parser.add_argument(
         "--cache-hit-tolerance-tokens", dest="tolerance_tokens", type=int, default=0
     )

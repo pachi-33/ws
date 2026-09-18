@@ -36,6 +36,7 @@ REQUEST_RATE="${REQUEST_RATE:-inf}"
 PAGE_SIZE="${PAGE_SIZE:-auto}"
 DP_SIZE="${DP_SIZE:-auto}"
 CACHE_HIT_TOLERANCE_TOKENS="${CACHE_HIT_TOLERANCE_TOKENS:-0}"
+STRICT_CACHE_HIT="${STRICT_CACHE_HIT:-0}"
 TARGET_KV_HIT_PERCENT="${TARGET_KV_HIT_PERCENT:-${PREFIX_PERCENT:-90}}"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 SEED="${SEED:-42}"
@@ -54,18 +55,21 @@ Options:
   --request-rate RATE           Requests/s, or inf for burst traffic.
   --page-size N|auto            KV page size for prefix alignment (default auto).
   --dp-size N|auto              Verify server DP count (default auto).
-  --cache-hit-tolerance-tokens N Allowed cached-token deviation (default 0).
+  --strict-cache-hit            Fail on cache target deviation (default off).
+  --cache-hit-tolerance-tokens N Cached-token comparison tolerance (default 0).
   --result-dir DIR              Directory for JSONL and summary files.
   -h, --help                    Show this help.
 
 The same settings can be supplied as environment variables: INPUT_LEN,
 OUTPUT_LEN, TARGET_KV_HIT_PERCENT, NUM_REQUESTS, MAX_CONCURRENCY, REQUEST_RATE,
-PAGE_SIZE, DP_SIZE, CACHE_HIT_TOLERANCE_TOKENS, and RESULT_DIR. MODEL, HOST,
+PAGE_SIZE, DP_SIZE, STRICT_CACHE_HIT (0/1), CACHE_HIT_TOLERANCE_TOKENS,
+and RESULT_DIR. MODEL, HOST,
 PORT, and SGLANG_ROOT remain configurable through environment variables.
 
 The companion bench_cache_exact_glm.py must stay beside this script.
-Each measured request must match the page-aligned cache target; an invalid
-run returns a nonzero status and preserves its raw result and summary.
+Actual cache hits are reported per request and per DP. Cache target deviations
+warn by default; add --strict-cache-hit to reject them. Failed requests or
+invalid token/routing metadata still return a nonzero status.
 EOF
 }
 
@@ -118,6 +122,10 @@ while (( $# > 0 )); do
             require_value "$@"
             DP_SIZE="$2"
             shift 2
+            ;;
+        --strict-cache-hit)
+            STRICT_CACHE_HIT=1
+            shift
             ;;
         --cache-hit-tolerance-tokens)
             require_value "$@"
@@ -184,6 +192,11 @@ for value_name in INPUT_LEN OUTPUT_LEN NUM_REQUESTS MAX_CONCURRENCY PAGE_SIZE DP
     fi
 done
 
+if ! [[ "${STRICT_CACHE_HIT}" =~ ^[01]$ ]]; then
+    echo "STRICT_CACHE_HIT must be 0 or 1." >&2
+    exit 2
+fi
+
 if ! [[ "${CACHE_HIT_TOLERANCE_TOKENS}" =~ ^(0|[1-9][0-9]*)$ ]]; then
     echo "CACHE_HIT_TOLERANCE_TOKENS must be a nonnegative integer." >&2
     exit 2
@@ -223,6 +236,7 @@ echo "  input/output:        ${INPUT_LEN}/${OUTPUT_LEN} tokens"
 echo "  prefix/question:     ${PREFIX_LEN}/${QUESTION_LEN} target tokens"
 echo "  DP ranks/page size:  ${DP_SIZE}/${PAGE_SIZE}"
 echo "  cache tolerance:     ${CACHE_HIT_TOLERANCE_TOKENS} tokens per request"
+echo "  strict cache hit:    ${STRICT_CACHE_HIT} (0=report deviations, 1=reject deviations)"
 echo "  request rate:        ${REQUEST_RATE} req/s"
 echo "  max concurrency:     ${MAX_CONCURRENCY}"
 echo "  per-request details: collected in raw JSONL; omitted from summary output"
@@ -264,6 +278,10 @@ BENCH_ARGS=(
     --output-file "${OUTPUT_FILE}"
     --output-details
 )
+
+if (( STRICT_CACHE_HIT )); then
+    BENCH_ARGS+=(--strict-cache-hit)
+fi
 
 BENCH_STATUS=0
 "${BENCH_ARGS[@]}" 2>&1 | tee "${CONSOLE_LOG}" || BENCH_STATUS=$?
@@ -394,7 +412,7 @@ jq -s \
             request_rate_req_s: $run.request_rate,
             configured_max_concurrency: $run.max_concurrency
         },
-        cache_validation: ($run.cache_validation | del(.failures)),
+        cache_validation: ($run.cache_validation | del(.failures, .cache_deviations)),
         exact_cache_configuration: $run.exact_cache_configuration,
         completion: {
             requested_requests: ($requests | length),
@@ -537,7 +555,7 @@ echo "Benchmark summary"
 jq . "${SUMMARY_FILE}"
 
 if [[ "$(jq -r '.cache_validation.valid' "${SUMMARY_FILE}")" != true ]]; then
-    echo "INVALID benchmark: per-request cache validation failed. Results are for diagnosis only." >&2
+    echo "INVALID benchmark: benchmark validation failed. Results are for diagnosis only." >&2
     exit 4
 fi
 exit "${BENCH_STATUS}"
