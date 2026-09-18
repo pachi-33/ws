@@ -3,13 +3,14 @@ set -euo pipefail
 
 # Prefix-cache benchmark for SGLang.
 #
-# Default: 16K input, 1K output, approximately 90% of prompt tokens reused.
+# Default: 128K input, 1K output, 90% shared prefix aligned to KV pages.
+# Send token IDs directly; warm and verify every DP before native timed requests.
 # Settings can be overridden with command-line flags or environment variables:
-#   bash private_tool_script/run_sglang_bench_cache.sh \
+#   bash run_sglang_bench_cache_glm.sh \
 #     --input-len 65536 --output-len 8192 \
 #     --target-kv-hit-percent 90 --max-concurrency 32
 #
-# TARGET_KV_HIT_PERCENT>0: one warmed shared prefix sized to the target hit rate.
+# TARGET_KV_HIT_PERCENT>0: the same shared prefix is warmed on every DP rank.
 # TARGET_KV_HIT_PERCENT=0: every request has a distinct prefix; radix cache
 # remains enabled so this measures the cache-enabled miss path.
 #
@@ -20,7 +21,7 @@ set -euo pipefail
 SGLANG_ROOT="${SGLANG_ROOT:-/home/y00951466/sglang}"
 # MODEL="${MODEL:-/home/weights/GLM-5.2-w4a8}"
 # MODEL="${MODEL:-/home/weights/GLM-5.2-W4A8C8-A5-0731}"
-MODEL="${MODEL:-/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy }"
+MODEL="${MODEL:-/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy}"
 # MODEL="${MODEL:-/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731}"
 
 HOST="${HOST:-127.0.0.1}"
@@ -32,16 +33,17 @@ OUTPUT_LEN="${OUTPUT_LEN:-1024}" # 1K
 NUM_REQUESTS="${NUM_REQUESTS:-24}"
 MAX_CONCURRENCY="${MAX_CONCURRENCY:-24}"
 REQUEST_RATE="${REQUEST_RATE:-inf}"
-PAGE_SIZE="${PAGE_SIZE:-auto}" #2
-# Backward-compatible precedence:
-# TARGET_KV_HIT_PERCENT > PREFIX_PERCENT > CACHE_MODE > default 90.
-TARGET_KV_HIT_PERCENT=90
+PAGE_SIZE="${PAGE_SIZE:-auto}"
+DP_SIZE="${DP_SIZE:-auto}"
+CACHE_HIT_TOLERANCE_TOKENS="${CACHE_HIT_TOLERANCE_TOKENS:-0}"
+TARGET_KV_HIT_PERCENT="${TARGET_KV_HIT_PERCENT:-${PREFIX_PERCENT:-90}}"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 SEED="${SEED:-42}"
 RESULT_DIR="${RESULT_DIR:-./benchmark_results/cache}"
 
 usage() {
     cat <<'EOF'
-Usage: run_sglang_bench_cache.sh [options]
+Usage: run_sglang_bench_cache_glm.sh [options]
 
 Options:
   --input-len N                 Target input length in tokens.
@@ -51,13 +53,19 @@ Options:
   --max-concurrency N           Client-side maximum in-flight requests.
   --request-rate RATE           Requests/s, or inf for burst traffic.
   --page-size N|auto            KV page size for prefix alignment (default auto).
+  --dp-size N|auto              Verify server DP count (default auto).
+  --cache-hit-tolerance-tokens N Allowed cached-token deviation (default 0).
   --result-dir DIR              Directory for JSONL and summary files.
   -h, --help                    Show this help.
 
 The same settings can be supplied as environment variables: INPUT_LEN,
 OUTPUT_LEN, TARGET_KV_HIT_PERCENT, NUM_REQUESTS, MAX_CONCURRENCY, REQUEST_RATE,
-PAGE_SIZE, and RESULT_DIR. MODEL, HOST, PORT, and SGLANG_ROOT
-remain configurable through environment variables.
+PAGE_SIZE, DP_SIZE, CACHE_HIT_TOLERANCE_TOKENS, and RESULT_DIR. MODEL, HOST,
+PORT, and SGLANG_ROOT remain configurable through environment variables.
+
+The companion bench_cache_exact_glm.py must stay beside this script.
+Each measured request must match the page-aligned cache target; an invalid
+run returns a nonzero status and preserves its raw result and summary.
 EOF
 }
 
@@ -106,6 +114,16 @@ while (( $# > 0 )); do
             PAGE_SIZE="$2"
             shift 2
             ;;
+        --dp-size)
+            require_value "$@"
+            DP_SIZE="$2"
+            shift 2
+            ;;
+        --cache-hit-tolerance-tokens)
+            require_value "$@"
+            CACHE_HIT_TOLERANCE_TOKENS="$2"
+            shift 2
+            ;;
         --result-dir)
             require_value "$@"
             RESULT_DIR="$2"
@@ -134,19 +152,31 @@ if ! command -v jq >/dev/null 2>&1; then
     exit 3
 fi
 
-if [[ "${PAGE_SIZE}" == "auto" ]]; then
-    if ! SERVER_INFO_JSON="$(curl --fail --silent --show-error "${BASE_URL}/server_info")"; then
-        echo "Unable to query ${BASE_URL}/server_info; set --page-size explicitly if needed." >&2
-        exit 3
-    fi
-    PAGE_SIZE="$(jq -r '(if .decode then .decode[0] else . end).page_size // empty' <<<"${SERVER_INFO_JSON}")"
-    if ! [[ "${PAGE_SIZE}" =~ ^[1-9][0-9]*$ ]]; then
-        echo "Could not determine a valid page_size from ${BASE_URL}/server_info." >&2
-        exit 3
-    fi
+if [[ ! -f "${SCRIPT_DIR}/bench_cache_exact_glm.py" ]]; then
+    echo "Missing companion: ${SCRIPT_DIR}/bench_cache_exact_glm.py" >&2
+    exit 3
 fi
 
-for value_name in INPUT_LEN OUTPUT_LEN NUM_REQUESTS MAX_CONCURRENCY PAGE_SIZE; do
+if ! SERVER_INFO_JSON="$(curl --fail --silent --show-error "${BASE_URL}/server_info")"; then
+    echo "Unable to query ${BASE_URL}/server_info." >&2
+    exit 3
+fi
+SERVER_PAGE_SIZE="$(jq -r '(if .decode then .decode[0] else . end).page_size // empty' <<<"${SERVER_INFO_JSON}")"
+SERVER_DP_SIZE="$(jq -r '(if .decode then .decode[0] else . end).dp_size // empty' <<<"${SERVER_INFO_JSON}")"
+for value_name in SERVER_PAGE_SIZE SERVER_DP_SIZE; do
+    if ! [[ "${!value_name}" =~ ^[1-9][0-9]*$ ]]; then
+        echo "Could not determine ${value_name} from server_info." >&2
+        exit 3
+    fi
+done
+if [[ "${PAGE_SIZE}" == auto ]]; then PAGE_SIZE="${SERVER_PAGE_SIZE}"; fi
+if [[ "${DP_SIZE}" == auto ]]; then DP_SIZE="${SERVER_DP_SIZE}"; fi
+if [[ "${PAGE_SIZE}" != "${SERVER_PAGE_SIZE}" || "${DP_SIZE}" != "${SERVER_DP_SIZE}" ]]; then
+    echo "Configured PAGE_SIZE/DP_SIZE (${PAGE_SIZE}/${DP_SIZE}) differs from server (${SERVER_PAGE_SIZE}/${SERVER_DP_SIZE})." >&2
+    exit 2
+fi
+
+for value_name in INPUT_LEN OUTPUT_LEN NUM_REQUESTS MAX_CONCURRENCY PAGE_SIZE DP_SIZE; do
     value="${!value_name}"
     if ! [[ "${value}" =~ ^[1-9][0-9]*$ ]]; then
         echo "${value_name} must be a positive integer, got: ${value}" >&2
@@ -154,7 +184,12 @@ for value_name in INPUT_LEN OUTPUT_LEN NUM_REQUESTS MAX_CONCURRENCY PAGE_SIZE; d
     fi
 done
 
-if ! [[ "${TARGET_KV_HIT_PERCENT}" =~ ^[0-9]+$ ]]; then
+if ! [[ "${CACHE_HIT_TOLERANCE_TOKENS}" =~ ^(0|[1-9][0-9]*)$ ]]; then
+    echo "CACHE_HIT_TOLERANCE_TOKENS must be a nonnegative integer." >&2
+    exit 2
+fi
+
+if ! [[ "${TARGET_KV_HIT_PERCENT}" =~ ^(0|[1-9][0-9]*)$ ]]; then
     echo "TARGET_KV_HIT_PERCENT must be an integer from 0 to 99, got: ${TARGET_KV_HIT_PERCENT}" >&2
     exit 2
 fi
@@ -164,30 +199,15 @@ if (( TARGET_KV_HIT_PERCENT >= 100 )); then
     exit 2
 fi
 
-# Align the reusable prefix to the server's KV page size. For the 0% case the
-# prefix is still long, but unique per request, which prevents reuse while
-# retaining the same long-prefix prompt shape as the default 90% workload.
-if (( TARGET_KV_HIT_PERCENT == 0 )); then
-    PREFIX_LEN=$((INPUT_LEN * 90 / 100 / PAGE_SIZE * PAGE_SIZE))
-else
-    PREFIX_LEN=$((INPUT_LEN * TARGET_KV_HIT_PERCENT / 100 / PAGE_SIZE * PAGE_SIZE))
-fi
+# Every input contains exactly INPUT_LEN token IDs. Distinct markers inside
+# the first suffix page prevent accidental reuse past the shared boundary.
+PREFIX_LEN=$((INPUT_LEN * TARGET_KV_HIT_PERCENT / 100 / PAGE_SIZE * PAGE_SIZE))
 QUESTION_LEN=$((INPUT_LEN - PREFIX_LEN))
-
-if (( PREFIX_LEN <= 0 || QUESTION_LEN <= 0 )); then
+if (( QUESTION_LEN <= 0 || (TARGET_KV_HIT_PERCENT > 0 && PREFIX_LEN <= 0) )); then
     echo "Invalid prefix/question split: prefix=${PREFIX_LEN}, question=${QUESTION_LEN}" >&2
     exit 2
 fi
-
-if (( TARGET_KV_HIT_PERCENT > 0 )); then
-    NUM_GROUPS=1
-    PROMPTS_PER_GROUP="${NUM_REQUESTS}"
-    FLUSH_AFTER_WARMUP=0
-else
-    NUM_GROUPS="${NUM_REQUESTS}"
-    PROMPTS_PER_GROUP=1
-    FLUSH_AFTER_WARMUP=1
-fi
+ALIGNED_HIT_PERCENT="$(jq -n --argjson prefix "${PREFIX_LEN}" --argjson input "${INPUT_LEN}" '100 * $prefix / $input')"
 
 mkdir -p "${RESULT_DIR}"
 RUN_ID="${RUN_ID:-$(date +%Y%m%d_%H%M%S)}"
@@ -198,10 +218,11 @@ CONSOLE_LOG="${OUTPUT_FILE%.jsonl}.console.log"
 echo "SGLang prefix-cache benchmark"
 echo "  server:              ${BASE_URL}"
 echo "  model:               ${MODEL}"
-echo "  target KV hit rate:  ${TARGET_KV_HIT_PERCENT}%"
+echo "  target KV hit rate:  ${TARGET_KV_HIT_PERCENT}% (page-aligned ${ALIGNED_HIT_PERCENT}%)"
 echo "  input/output:        ${INPUT_LEN}/${OUTPUT_LEN} tokens"
 echo "  prefix/question:     ${PREFIX_LEN}/${QUESTION_LEN} target tokens"
-echo "  groups x prompts:    ${NUM_GROUPS} x ${PROMPTS_PER_GROUP}"
+echo "  DP ranks/page size:  ${DP_SIZE}/${PAGE_SIZE}"
+echo "  cache tolerance:     ${CACHE_HIT_TOLERANCE_TOKENS} tokens per request"
 echo "  request rate:        ${REQUEST_RATE} req/s"
 echo "  max concurrency:     ${MAX_CONCURRENCY}"
 echo "  per-request details: collected in raw JSONL; omitted from summary output"
@@ -209,17 +230,19 @@ echo "  result:              ${OUTPUT_FILE}"
 echo "  summary:             ${SUMMARY_FILE}"
 echo "  console log:         ${CONSOLE_LOG}"
 
-# Clear leftovers from earlier runs before the benchmark's warmup request.
-curl --fail --silent --show-error \
-    --request POST \
-    "${BASE_URL}/flush_cache?timeout=60"
-
+# The helper flushes once, then explicitly warms and probes every DP.
 # bench_serving also flushes automatically when SGLANG_IS_IN_CI is true. That
 # would destroy the deliberately warmed prefix for a nonzero hit-rate target.
 unset SGLANG_IS_IN_CI
 
 BENCH_ARGS=(
-    python -m sglang.benchmark.serving
+    python "${SCRIPT_DIR}/bench_cache_exact_glm.py"
+    --exact-input-len "${INPUT_LEN}"
+    --exact-hit-percent "${TARGET_KV_HIT_PERCENT}"
+    --exact-num-requests "${NUM_REQUESTS}"
+    --exact-page-size "${PAGE_SIZE}"
+    --exact-dp-size "${DP_SIZE}"
+    --cache-hit-tolerance-tokens "${CACHE_HIT_TOLERANCE_TOKENS}"
     --dataset-name generated-shared-prefix
     --backend sglang
     --model "${MODEL}"
@@ -227,14 +250,14 @@ BENCH_ARGS=(
     --port "${PORT}"
     --max-concurrency "${MAX_CONCURRENCY}"
     --request-rate "${REQUEST_RATE}"
-    --gsp-num-groups "${NUM_GROUPS}"
-    --gsp-prompts-per-group "${PROMPTS_PER_GROUP}"
+    --gsp-num-groups 1
+    --gsp-prompts-per-group "${NUM_REQUESTS}"
     --gsp-system-prompt-len "${PREFIX_LEN}"
     --gsp-question-len "${QUESTION_LEN}"
     --gsp-output-len "${OUTPUT_LEN}"
     --gsp-range-ratio 1.0
     --gsp-ordered
-    --warmup-requests 1
+    --warmup-requests 0
     --cache-report
     --tag "target_kv_hit_${TARGET_KV_HIT_PERCENT}pct"
     --seed "${SEED}"
@@ -242,13 +265,16 @@ BENCH_ARGS=(
     --output-details
 )
 
-if (( FLUSH_AFTER_WARMUP )); then
-    # Keep radix caching enabled, but remove the warmup entry before measuring
-    # the unique-prefix workload. This measures the cache-enabled miss path.
-    BENCH_ARGS+=(--flush-cache)
+BENCH_STATUS=0
+"${BENCH_ARGS[@]}" 2>&1 | tee "${CONSOLE_LOG}" || BENCH_STATUS=$?
+if (( BENCH_STATUS != 0 && BENCH_STATUS != 4 )); then
+    echo "Benchmark setup/execution failed; see ${CONSOLE_LOG}." >&2
+    exit "${BENCH_STATUS}"
 fi
-
-"${BENCH_ARGS[@]}" 2>&1 | tee "${CONSOLE_LOG}"
+if [[ ! -s "${OUTPUT_FILE}" ]]; then
+    echo "Benchmark did not produce a result; see ${CONSOLE_LOG}." >&2
+    exit 3
+fi
 
 # bench_serving writes JSONL. Use the last record so an explicitly reused
 # output path still summarizes the most recent run. The raw JSONL remains the
@@ -316,9 +342,12 @@ jq -s \
         (.cached_tokens[$i] // 0) as $cached |
         (.ttfts[$i] // 0) as $ttft |
         (.itls[$i] // []) as $itls |
-        (($itls | add) // 0) as $decode_time |
+        (.latencies[$i]) as $latency |
+        ($latency - $ttft) as $decode_time |
+        (($itls | add) // 0) as $itl_time |
         {
             request_index: $i,
+            dp_rank: .dp_ranks[$i],
             success: (((.errors[$i] // "") == "") and ($output > 0)),
             error: (if (.errors[$i] // "") == "" then null else .errors[$i] end),
             input_tokens: $input,
@@ -329,14 +358,14 @@ jq -s \
             ),
             ttft_ms: (1000 * $ttft),
             decode_time_ms: (1000 * $decode_time),
-            e2e_latency_ms: (1000 * ($ttft + $decode_time)),
+            e2e_latency_ms: (1000 * $latency),
             tpot_ms: (
                 if $output > 1 then 1000 * $decode_time / ($output - 1)
                 else null end
             ),
             mean_itl_ms: (
                 if ($itls | length) > 0
-                then 1000 * $decode_time / ($itls | length)
+                then 1000 * $itl_time / ($itls | length)
                 else null end
             ),
             p99_itl_ms: (
@@ -365,6 +394,8 @@ jq -s \
             request_rate_req_s: $run.request_rate,
             configured_max_concurrency: $run.max_concurrency
         },
+        cache_validation: ($run.cache_validation | del(.failures)),
+        exact_cache_configuration: $run.exact_cache_configuration,
         completion: {
             requested_requests: ($requests | length),
             completed_requests: $run.completed,
@@ -384,10 +415,16 @@ jq -s \
         },
         kv_cache: {
             target_hit_rate_pct: $target_kv_hit_pct,
-            actual_aggregate_hit_rate_pct: $run.cache_report.cache_hit_rate_pct,
-            target_error_percentage_points: (
-                if $run.cache_report.cache_hit_rate_pct == null then null
-                else $run.cache_report.cache_hit_rate_pct - $target_kv_hit_pct end
+            aligned_target_hit_rate_pct: $run.exact_cache_configuration.expected_hit_rate_pct,
+            expected_cached_tokens_per_request: $run.exact_cache_configuration.prefix_tokens,
+            actual_aggregate_hit_rate_pct: (
+                if $run.cache_report.total_prompt_tokens > 0
+                then 100 * $run.cache_report.total_cached_tokens / $run.cache_report.total_prompt_tokens
+                else null end
+            ),
+            aligned_target_error_percentage_points: (
+                if ($run.cache_report.total_prompt_tokens // 0) <= 0 then null
+                else (100 * $run.cache_report.total_cached_tokens / $run.cache_report.total_prompt_tokens) - $run.exact_cache_configuration.expected_hit_rate_pct end
             ),
             total_prompt_tokens: $run.cache_report.total_prompt_tokens,
             total_cached_tokens: $run.cache_report.total_cached_tokens,
@@ -395,6 +432,13 @@ jq -s \
             host_cached_tokens: $run.cache_report.host_cached_tokens,
             storage_cached_tokens: $run.cache_report.storage_cached_tokens,
             storage_backend: $run.cache_report.storage_backend,
+            per_dp: ($requests | group_by(.dp_rank) | map({
+                dp_rank: .[0].dp_rank,
+                requests: length,
+                cache_hit_rate_pct: ([.[].cache_hit_rate_pct] | stats),
+                ttft_ms: ([.[] | select(.success) | .ttft_ms] | stats),
+                tpot_ms: ([.[] | select(.success) | .tpot_ms] | stats)
+            })),
             per_request_hit_rate_pct: (
                 [$requests[] | select(.success) | .cache_hit_rate_pct] | stats
             )
@@ -491,3 +535,9 @@ fi
 echo
 echo "Benchmark summary"
 jq . "${SUMMARY_FILE}"
+
+if [[ "$(jq -r '.cache_validation.valid' "${SUMMARY_FILE}")" != true ]]; then
+    echo "INVALID benchmark: per-request cache validation failed. Results are for diagnosis only." >&2
+    exit 4
+fi
+exit "${BENCH_STATUS}"
