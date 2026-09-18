@@ -1,0 +1,53 @@
+====== Serving Benchmark Result ============                                                                                                                                                                                       
+Backend:                                 sglang                                                                                                                                                                                          
+Traffic request rate:                    inf                                                                                                                                                                                             
+Max request concurrency:                 24                                                                                                                                                                                              
+Successful requests:                     24                                                                                                                                                                                              
+Benchmark duration (s):                  169.84                                                                                                                                                                                          
+Total input tokens:                      1638555                                                                                                                                                                                         
+Total input text tokens:                 1638555                                                                                                                                                                                         
+Total generated tokens:                  98304                                                                                                                                                                                           
+Total generated tokens (retokenized):    97074                                                                                                                                                                                           
+Request throughput (req/s):              0.14                                                                                                                                                                                            
+Input token throughput (tok/s):          9647.61                                                                                                                                                                                         
+Output token throughput (tok/s):         578.80                                                                                                                                                                                          
+Peak output token throughput (tok/s):    1452.00                                                                                                                                                                                         
+Peak concurrent requests:                24                                                                                                                                                                                              
+Total token throughput (tok/s):          10226.41                                                                                                                                                                                        
+Concurrency:                             16.45                                                                                                                                                                                           
+Accept length:                           4.92                                                                                                                                                                                            
+----------------End-to-End Latency----------------                                                                                                                                                                                       
+Mean E2E Latency (ms):                   116393.72                                                                                                                                                                                       
+Median E2E Latency (ms):                 112764.41                                                                                                                                                                                       
+P90 E2E Latency (ms):                    113802.58                                                                                                                                                                                       
+P95 E2E Latency (ms):                    153146.15                                                                                                                                                                                       
+P99 E2E Latency (ms):                    167502.50                                                                                                                                                                                       
+---------------Time to First Token----------------                                                                                                                                                                                       
+Mean TTFT (ms):                          50555.83                                                                                                                                                                                        
+Median TTFT (ms):                        46917.79                                                                                                                                                                                        
+P90 TTFT (ms):                           46940.96                                                                                                                                                                                        
+P95 TTFT (ms):                           101063.24                                                                                                                                                                                       
+P99 TTFT (ms):                           112171.66 
+-----Time per Output Token (excl. 1st token)------ 
+Mean TPOT (ms):                          16.08                                                                      
+Median TPOT (ms):                        16.08     
+P90 TPOT (ms):                           17.22     
+P95 TPOT (ms):                           18.72     
+P99 TPOT (ms):                           20.91     
+---------------Inter-Token Latency---------------- 
+Mean ITL (ms):                           16.08     
+Median ITL (ms):                         15.32                                                                      
+P90 ITL (ms):                            15.61                                                                      
+P95 ITL (ms):                            15.73                                                                      
+P99 ITL (ms):                            24.49                                                                      
+Max ITL (ms):                            24375.05  
+----------------Cache Hit Details-----------------                                                                                                                                                                                       
+Total prompt tokens:                     1638555                                                                                                                                                                                         
+Total cached tokens:                     1431168                                                                                                                                                                                         
+  Device:                                1431168                                                                                                                                                                                         
+  Host:                                  0                                                                                                                                                                                               
+Cache hit rate:                          87.3%                                                                                                                                                                                           
+  Device:                                100.0%                                                                                                                                                                                          
+  Host:                                  0.0%                                                                                                                                                                                            
+==================================================                                                                                                                                                                                       
+                                                   

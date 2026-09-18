@@ -1,0 +1,52 @@
+============ Serving Benchmark Result ============ 
+Backend:                                 sglang    
+Traffic request rate:                    inf       
+Max request concurrency:                 24                                                                         
+Successful requests:                     24        
+Benchmark duration (s):                  153.17    
+Total input tokens:                      1638555   
+Total input text tokens:                 1638555   
+Total generated tokens:                  98304            
+Total generated tokens (retokenized):    98300            
+Request throughput (req/s):              0.16      
+Input token throughput (tok/s):          10697.48  
+Output token throughput (tok/s):         641.79                                                                     
+Peak output token throughput (tok/s):    1482.00                                                                    
+Peak concurrent requests:                24        
+Total token throughput (tok/s):          11339.27  
+Concurrency:                             18.44     
+Accept length:                           4.93      
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   117695.63 
+Median E2E Latency (ms):                 106672.07 
+P90 E2E Latency (ms):                    148330.76 
+P95 E2E Latency (ms):                    148399.56 
+P99 E2E Latency (ms):                    151996.11 
+---------------Time to First Token----------------
+Mean TTFT (ms):                          70117.83  
+Median TTFT (ms):                        52801.90  
+P90 TTFT (ms):                           106746.88 
+P95 TTFT (ms):                           106749.20 
+P99 TTFT (ms):                           106752.92 
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          11.62     
+Median TPOT (ms):                        11.72     
+P90 TPOT (ms):                           13.16     
+P95 TPOT (ms):                           13.22     
+P99 TPOT (ms):                           13.25     
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           11.62     
+Median ITL (ms):                         10.87     
+P90 ITL (ms):                            11.09     
+P95 ITL (ms):                            11.21     
+P99 ITL (ms):                            14.10     
+Max ITL (ms):                            5886.97   
+----------------Cache Hit Details-----------------
+Total prompt tokens:                     1638555   
+Total cached tokens:                     1053184   
+  Device:                                1053184   
+  Host:                                  0         
+Cache hit rate:                          64.3%
+  Device:                                100.0%
+  Host:                                  0.0%
+==================================================

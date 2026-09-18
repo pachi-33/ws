@@ -17,9 +17,9 @@ unset HTTPS_PROXY
 unset HTTP_PROXY
 unset ASCEND_LAUNCH_BLOCKING
 
-pkill -9 python  2>/dev/null || true
-pkill -9 sglang 2>/dev/null || true
-pkill -9 VLLM   2>/dev/null || true
+# pkill -9 python  2>/dev/null || true
+# pkill -9 sglang 2>/dev/null || true
+# pkill -9 VLLM   2>/dev/null || true
 
 # ================================================================
 # Environment

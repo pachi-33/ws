@@ -40,3 +40,8 @@ env_tools/sync_workspace.sh reset --clean
 
 # 删除所有未跟踪及忽略文件，但保留凭据
 env_tools/sync_workspace.sh reset --clean-ignored
+
+
+
+bash <你的启动脚本> 2>&1 |
+  tee -a /home/y00951466/logs/sglang_$(date +%Y%m%d_%H%M%S).log

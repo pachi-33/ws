@@ -77,9 +77,6 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --speculative-num-steps 4 \
 --speculative-eagle-topk 1 \
 --speculative-num-draft-tokens 5 \
---watchdog-timeout 60 \
---crash-dump-folder /home/y00951466/logs/sglang_crash_dump \
---enable-dp-attention-local-control-broadcast
 # --disable-overlap-schedule # exp1
 # --speculative-draft-model-quantization modelslim
 # --kv-cache-dtype "fp8_e4m3"

@@ -4,10 +4,10 @@ unset HTTPS_PROXY
 unset HTTP_PROXY
 unset ASCEND_LAUNCH_BLOCKING
 
-export ENABLE_PROFILING=1
+export ENABLE_PROFILING=0
 export PROFILING_BS=5
 export PROFILING_STAGE="decode" # "decode" # "prefill"
-export PROFILING_step=10
+export PROFILING_step=5
 
 # export PYTHONPATH=/mnt/share/l00951279/sglang/python:$PYTHONPATH
 # export PYTHONPATH=/home/y00951466/sglang-my/python:$PYTHONPATH/
@@ -32,10 +32,11 @@ export PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
 export TASK_QUEUE_ENABLE=1
 export STREAMS_PER_DEVICE=32
 
-MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731
+# MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731
 # MODEL_PATH=/home/weights/GLM-5.2-W4A8C8-A5-0731
 # MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-0713      
 # MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy 
+MODEL_PATH=/mnt/share/GLM-5.2-W8A8C8-mxfp8 
 
 export ASCEND_USE_FIA=1
 export SGLANG_NPU_USE_MLAPO=0
@@ -63,20 +64,20 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --attention-backend ascend \
 --device npu \
 --watchdog-timeout 9000 \
---max-running-requests 24 \
+--max-running-requests 100 \
 --mem-fraction-static 0.85 \
 --quantization modelslim \
 --max-prefill-tokens 2048000 \
---chunked-prefill-size 32768 \
+--chunked-prefill-size 65536 \
 --enable-metrics \
 --speculative-algorithm EAGLE \
 --speculative-num-steps 4 \
 --speculative-eagle-topk 1 \
 --speculative-num-draft-tokens 5
-# --dp-size 2 \
+# --dp-size 8 \
 # --enable-dp-attention
-# --speculative-draft-model-quantization modelslim
 # --kv-cache-dtype "fp8_e4m3"
+# --speculative-draft-model-quantization modelslim
 # --max-total-tokens 327680 \
 # --cuda-graph-max-bs-decode 8 \
 # --cuda-graph-max-bs-prefill 8 \
