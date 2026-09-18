@@ -4,9 +4,13 @@ unset HTTPS_PROXY
 unset HTTP_PROXY
 unset ASCEND_LAUNCH_BLOCKING
 
-export ASCEND_RT_VISIBLE_DEVICES=4,5,6,7
+# export ASCEND_RT_VISIBLE_DEVICES=4,5,6,7
 
 export ASCEND_LAUNCH_BLOCKING=1
+
+# export ASCEND_GLOBAL_LOG_LEVEL=1
+# export ASCEND_SLOG_PRINT_TO_STDOUT=1
+# export HCCL_ENTRY_LOG_ENABLE=1
 
 # export ASCEND_SLOG_PRINT_TO_STDOUT=0 #日志打屏, 可选
 # export ASCEND_GLOBAL_LOG_LEVEL=1 #日志级别常用 1 INFO级别; 3 ERROR级别
@@ -39,10 +43,10 @@ export TASK_QUEUE_ENABLE=1
 export STREAMS_PER_DEVICE=32
 
 # MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731
-MODEL_PATH=/mnt/share/y00951466/GLM-5.2-W4A4C8-mxfp4-A5-0731-clip
+# MODEL_PATH=/mnt/share/y00951466/GLM-5.2-W4A4C8-mxfp4-A5-0731-clip
 # MODEL_PATH=/home/weights/GLM-5.2-W4A8C8-A5-0731
 # MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-0713      
-# MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy 
+MODEL_PATH=/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy 
 # MODEL_PATH=/mnt/share/w00936111/GLM-5.2-W8A8C8-mxfp8
 # MODEL_PATH=/mnt/share/GLM-5.2-W8A8C8-mxfp8 
 
@@ -54,8 +58,8 @@ export TRANSFORMERS_VERBOSITY=error
 
 export HCCL_HOST_SOCKET_PORT_RANGE=auto
 
-# export HCCL_SOCKET_IFNAME=lo
-unset HCCL_SOCKET_IFNAME
+export HCCL_SOCKET_IFNAME=lo
+# unset HCCL_SOCKET_IFNAME
 export GLOO_SOCKET_IFNAME=lo
 
 # export DEEPEP_NORMAL_LONG_SEQ_ROUND=9
@@ -74,7 +78,7 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --served-model-name "${SERVED_MODEL_NAME}" \
 --host "${SERVER_HOST}" \
 --port "${SERVER_PORT}" \
---tp-size 4 \
+--tp-size 8 \
 --trust-remote-code \
 --attention-backend ascend \
 --device npu \
@@ -89,15 +93,13 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --cuda-graph-bs 1 2 3 4 5 6 7 8 \
 --enable-nsa-prefill-context-parallel \
 --dsa-prefill-cp-mode in-seq-split \
---attn-cp-size 4 \
+--attn-cp-size 8 \
 --load-balance-method round_robin \
 --speculative-algorithm EAGLE \
 --speculative-num-steps 4 \
 --speculative-eagle-topk 1 \
 --speculative-num-draft-tokens 5 \
 --speculative-draft-kv-cache-dtype bf16 \
---enable-draft-prefetch \
---skip-draft-prefetch-seq-lens-cpu-sync \
 --enable-hierarchical-cache \
 --hicache-io-backend kernel_ascend \
 --enable-cache-report \
@@ -106,6 +108,8 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --moe-a2a-backend deepep \
 --deepep-mode auto
 
+# --enable-draft-prefetch \
+# --skip-draft-prefetch-seq-lens-cpu-sync \
 # --dp-size 8 \
 # --enable-dp-attention
 # --kv-cache-dtype "fp8_e4m3"

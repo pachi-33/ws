@@ -20,8 +20,8 @@ set -euo pipefail
 SGLANG_ROOT="${SGLANG_ROOT:-/home/y00951466/sglang}"
 # MODEL="${MODEL:-/home/weights/GLM-5.2-w4a8}"
 # MODEL="${MODEL:-/home/weights/GLM-5.2-W4A8C8-A5-0731}"
-# MODEL="${MODEL:-/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy }"
-MODEL="${MODEL:-/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731}"
+MODEL="${MODEL:-/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy }"
+# MODEL="${MODEL:-/mnt/share/w00936111/GLM-5.2-W4A4C8-mxfp4-A5-0731}"
 
 HOST="${HOST:-127.0.0.1}"
 PORT="${PORT:-8818}"
@@ -35,7 +35,7 @@ REQUEST_RATE="${REQUEST_RATE:-inf}"
 PAGE_SIZE="${PAGE_SIZE:-auto}" #2
 # Backward-compatible precedence:
 # TARGET_KV_HIT_PERCENT > PREFIX_PERCENT > CACHE_MODE > default 90.
-TARGET_KV_HIT_PERCENT=93
+TARGET_KV_HIT_PERCENT=91
 SEED="${SEED:-42}"
 RESULT_DIR="${RESULT_DIR:-./benchmark_results/cache}"
 
