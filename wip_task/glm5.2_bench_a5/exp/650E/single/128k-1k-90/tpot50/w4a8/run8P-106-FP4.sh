@@ -84,18 +84,18 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --attention-backend ascend \
 --device npu \
 --watchdog-timeout 9000 \
---max-running-requests 20 \
---mem-fraction-static 0.85 \
+--max-running-requests 36 \
+--mem-fraction-static 0.8 \
 --quantization modelslim \
 --max-prefill-tokens 2048000 \
 --chunked-prefill-size 16384 \
 --enable-metrics \
---cuda-graph-bs 4 8 12 16 20 \
+--cuda-graph-bs 8 \
 --load-balance-method round_robin \
 --speculative-algorithm EAGLE \
---speculative-num-steps 4 \
+--speculative-num-steps 3 \
 --speculative-eagle-topk 1 \
---speculative-num-draft-tokens 5 \
+--speculative-num-draft-tokens 4 \
 --speculative-draft-kv-cache-dtype bf16 \
 --kv-cache-dtype "fp8_e4m3" \
 --enable-hierarchical-cache \
@@ -104,7 +104,7 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --hicache-size 60 \
 --enable-nsa-prefill-context-parallel \
 --dsa-prefill-cp-mode in-seq-split \
---attn-cp-size 4
+--attn-cp-size 8
 
 # --moe-dense-tp-size 1 \
 # --moe-a2a-backend deepep \

@@ -30,6 +30,8 @@ export PYTHONPATH=/home/y00951466/sglang/python:$PYTHONPATH
 # source /mnt/share/chenxu/SFA/vendors/custom_transformer/bin/set_env.bash
 source /usr/local/memfabric_hybrid/set_env.sh
 
+export DEEPEP_NORMAL_COMBINE_ENABLE_LONG_SEQ=0
+
 export HCCL_CONNECT_TIMEOUT=300
 export HCCL_EXEC_TIMEOUT=68
 export HCCL_OP_EXPANSION_MODE=AIV
@@ -53,7 +55,7 @@ export SGLANG_DEEPEP_NUM_MAX_DISPATCH_TOKENS_PER_RANK=36
 # export SGLANG_SCHEDULER_DECREASE_PREFILL_IDLE=1
 # export SGLANG_PREFILL_DELAYER_MAX_DELAY_PASSES=200
 
-export SGLANG_SET_CPU_AFFINITY=1
+# export SGLANG_SET_CPU_AFFINITY=1
 
 # [MTP]
 export SGLANG_ENABLE_SPEC_V2=1
@@ -63,7 +65,7 @@ export TRANSFORMERS_VERBOSITY=error
 
 # [多机 / 通信]
 export HCCL_HOST_SOCKET_PORT_RANGE=auto
-export GLOO_SOCKET_IFNAME=data0.173
+# export GLOO_SOCKET_IFNAME=data0.173
 
 # ================================================================
 # A5 PD 分离
@@ -186,7 +188,7 @@ echo "[run_8p8d_pd] logs will be saved to ${LOG_DIR}"
 for i in "${!P_IPS[@]}"; do
   if [[ "$LOCAL_HOST1" == "${P_IPS[$i]}" || "$LOCAL_HOST2" == "${P_IPS[$i]}" ]]; then
 
-    export HCCL_SOCKET_IFNAME="${P_IFS[$i]}"
+    # export HCCL_SOCKET_IFNAME="${P_IFS[$i]}"
 
     echo "================================================"
     echo "Launching GLM5.2 Prefill"
@@ -206,7 +208,7 @@ for i in "${!P_IPS[@]}"; do
     export SGLANG_LOG_HICACHE_LAYER_TIME=1
     export SGLANG_SCHEDULER_SKIP_ALL_GATHER=1
 
-    export SGLANG_HICACHE_HYBM_RESERVE_GB=160
+    export SGLANG_HICACHE_HYBM_RESERVE_GB=80
     export SGLANG_HICACHE_IO_ASCENDC=1
     export SGLANG_HICACHE_HOST_MEM=hybm
 
@@ -247,7 +249,7 @@ for i in "${!P_IPS[@]}"; do
       --enable-hierarchical-cache \
       --hicache-io-backend kernel_ascend \
       --enable-cache-report \
-      --hicache-size 160 \
+      --hicache-size 80 \
       --enable-metrics \
       2>&1 | tee "${LOG_FILE}"
 
@@ -282,7 +284,7 @@ done
 for i in "${!D_IPS[@]}"; do
   if [[ "$LOCAL_HOST1" == "${D_IPS[$i]}" || "$LOCAL_HOST2" == "${D_IPS[$i]}" ]]; then
 
-    export HCCL_SOCKET_IFNAME="${D_IFS[$i]}"
+    # export HCCL_SOCKET_IFNAME="${D_IFS[$i]}"
 
     echo "================================================"
     echo "Launching GLM5.2 Decode"
@@ -297,8 +299,8 @@ for i in "${!D_IPS[@]}"; do
     echo "GLOO interface  : ${GLOO_SOCKET_IFNAME}"
     echo "================================================"
 
-    export DEEPEP_HCCL_BUFFSIZE=250
-    export HCCL_BUFFSIZE=70
+    export DEEPEP_HCCL_BUFFSIZE=1000
+    export HCCL_BUFFSIZE=1000
 
     # LM-head TP
     export SGLANG_LM_HEAD_TP=8
@@ -347,8 +349,6 @@ for i in "${!D_IPS[@]}"; do
       --speculative-eagle-topk 1 \
       --speculative-num-draft-tokens 6 \
       --speculative-draft-kv-cache-dtype bf16 \
-      --enable-draft-prefetch \
-      --skip-draft-prefetch-seq-lens-cpu-sync \
       --enable-metrics \
       2>&1 | tee "${LOG_FILE}"
 
@@ -370,7 +370,7 @@ exit 1
 # python -m sglang_router.launch_router \
 #     --pd-disaggregation \
 #     --policy cache_aware \
-#     --prefill http://141.61.94.103:30123 \
-#     --decode http://141.61.94.111:30000 \
+#     --prefill http://141.61.73.103:30123 \
+#     --decode http://141.61.73.105:30000 \
 #     --host 0.0.0.0 \
-#     --port 6677
+#     --port 8818
