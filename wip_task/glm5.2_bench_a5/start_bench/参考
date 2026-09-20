@@ -1,0 +1,13 @@
+# 创建缓存
+python -m sglang.bench_serving   --backend sglang   --host 141.61.94.111 --port 30000  \
+--dataset-name generated-shared-prefix --gsp-num-groups 1 --gsp-prompts-per-group 4 \
+--gsp-system-prompt-len 140000 --gsp-question-len 0 --gsp-output-len 1 \
+--model /mnt/share/recipes/kimi/kimi_k3_27 --max-concurrency 4  \
+--random-range-ratio 1.0  --warmup-requests 0
+
+# 压测
+python -m sglang.bench_serving   --backend sglang   --host 141.61.94.111 --port 30000  \
+--dataset-name generated-shared-prefix --gsp-num-groups 1 --gsp-prompts-per-group 64 \
+--gsp-system-prompt-len 140000 --gsp-question-len 0 --gsp-output-len 1024 \
+--model /mnt/share/recipes/kimi/kimi_k3_27 --max-concurrency 1000  \
+--random-range-ratio 1.0  --warmup-requests 0
