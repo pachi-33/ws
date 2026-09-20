@@ -31,6 +31,8 @@ env_tools/sync_workspace.sh push
 
 # 自动提交全部改动并强制推送
 env_tools/sync_workspace.sh push --commit -m "sync workspace"
+bash /home/y00951466/ws/env_tools/sync_workspace.sh  push --commit -m "sync workspace"
+
 
 # 强制重置到远端最新
 env_tools/sync_workspace.sh reset
