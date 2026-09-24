@@ -77,7 +77,7 @@ unset ASCEND_GLOBAL_RESOURCE_CONFIG
 unset ASCEND_MF_STORE_URL
 unset ASCEND_MF_LOG_LEVEL
 
-export SGLANG_SCHEDULER_SKIP_ALL_GATHER=1
+# export SGLANG_SCHEDULER_SKIP_ALL_GATHER=1
 # ================================================================
 # 已验证配置：Common Runtime
 # ================================================================
@@ -148,7 +148,7 @@ export SGLANG_ENABLE_SPEC_V2=1
 #
 # 当前双机混部:
 #   TP16 -> 对应设置 16
-export SGLANG_LM_HEAD_TP=16
+# export SGLANG_LM_HEAD_TP=16
 
 
 # ================================================================
