@@ -1,25 +1,68 @@
-103:
-[2026-09-24 03:48:27] Router registered worker IPC: ipc:///tmp/tmp3z8wn36w (total: 2)
-[2026-09-24 03:48:27] INFO:     Application startup complete.
-[2026-09-24 03:48:27] INFO:     Application startup complete.
-[2026-09-24 03:48:27] Router registered worker IPC: ipc:///tmp/tmpqxbf514j (total: 3)
-[2026-09-24 03:48:27] INFO:     Application startup complete.
-[2026-09-24 03:48:28] INFO:     127.0.0.1:33454 - "GET /model_info HTTP/1.1" 200 OK
-[2026-09-24 03:48:28] INFO:     127.0.0.1:33468 - "GET /model_info HTTP/1.1" 200 OK
-[2026-09-24 03:48:28] INFO:     127.0.0.1:33500 - "GET /model_info HTTP/1.1" 200 OK
-[2026-09-24 03:48:30] INFO:     Started server process [5419]
-[2026-09-24 03:48:30] INFO:     Waiting for application startup.
-[2026-09-24 03:48:30] INFO:     Start multi-tokenizer worker process 5419, ipc_name=ipc:///tmp/tmpcmtywhf7
+103：
+[2026-09-24 03:59:16 DP0 TP7 EP7] Capture target verify NPU graph end. elapsed=4.77 s, mem usage=7.92 GB, avail mem=10.75 GB.
+[2026-09-24 03:59:16 DP0 TP7 EP7] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+Capturing batches (bs=8 avail_mem=10.46 GB): 100%|█████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  2.65it/s]
+[2026-09-24 03:59:17 DP0 TP0 EP0] Capture draft decode CUDA graph end. elapsed=1.06 s, mem usage=0.23 GB, avail mem=10.24 GB.
+[2026-09-24 03:59:17 DP0 TP0 EP0] Capture draft extend CUDA graph begin. backend=full, num_tokens_per_req=6, bs=[8], avail mem=10.24 GB
+Capturing batches (bs=8 avail_mem=10.22 GB): 100%|█████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  4.38it/s]
+[2026-09-24 03:59:18 DP0 TP6 EP6] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 03:59:18 DP0 TP1 EP1] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 03:59:18 DP0 TP4 EP4] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 03:59:18 DP0 TP0 EP0] Capture draft extend CUDA graph end. elapsed=0.91 s, mem usage=0.14 GB, avail mem=10.10 GB.
+[2026-09-24 03:59:18 DP0 TP0 EP0] max_total_num_tokens=816512, chunked_prefill_size=8192, max_prefill_tokens=16384, max_running_requests=18, context_len=153600, available_gpu_mem=10.10 GB
+[2026-09-24 03:59:18 DP0 TP0 EP0] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 03:59:18 DP0 TP5 EP5] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 03:59:18 DP0 TP2 EP2] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 03:59:18 DP0 TP3 EP3] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 03:59:18 DP0 TP7 EP7] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+[2026-09-24 03:59:19] Engine startup timings (s): load_weight=69.97, kv_cache_allocation=1.30, scheduler_e2e=123.63, cuda_graph={prefill=0.00, decode=0.00, target_verify=4.77, draft_prefill=0.00, draft_decode=1.15, draft_extend=0.91}, tokenizer_e2e=160.32
+================= [DEBUG] 决定是否打印profiling=================================
+[2026-09-24 03:59:19] main process ID: None, current process ID: 7396
+[2026-09-24 03:59:19] INFO:     Uvicorn running on http://0.0.0.0:30000 (Press CTRL+C to quit)
+[2026-09-24 03:59:19] INFO:     Started parent process [7396]
+[2026-09-24 03:59:29] INFO:     Waiting for child process [9937]
+[2026-09-24 03:59:29] INFO:     Child process [9937] died
+[2026-09-24 03:59:34] INFO:     Started server process [9940]
+[2026-09-24 03:59:34] INFO:     Waiting for application startup.
+[2026-09-24 03:59:34] INFO:     Start multi-tokenizer worker process 9940, ipc_name=ipc:///tmp/tmp7qw3if3v
+[2026-09-24 03:59:35] INFO:     Started server process [9938]
+[2026-09-24 03:59:35] INFO:     Waiting for application startup.
+[2026-09-24 03:59:35] INFO:     Start multi-tokenizer worker process 9938, ipc_name=ipc:///tmp/tmpp284wu09
+[2026-09-24 03:59:36] INFO:     Started server process [9939]
+[2026-09-24 03:59:36] INFO:     Waiting for application startup.
+[2026-09-24 03:59:36] INFO:     Start multi-tokenizer worker process 9939, ipc_name=ipc:///tmp/tmpn6uguy3y
 Tokenizer for /mnt/share/GLM-5.2-W4A8C8-A5-0731-copy is still TokenizersBackend after retries with --trust-remote-code. Model-specific tokenizer attributes may be missing.
-[2026-09-24 03:48:35] Router registered worker IPC: ipc:///tmp/tmpcmtywhf7 (total: 4)
-[2026-09-24 03:48:35] INFO:     Application startup complete.
-[2026-09-24 03:48:36] INFO:     127.0.0.1:57092 - "GET /model_info HTTP/1.1" 200 OK
-[2026-09-24 03:49:09 DP0 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+[2026-09-24 03:59:39] Router registered worker IPC: ipc:///tmp/tmp7qw3if3v (total: 1)
+[2026-09-24 03:59:39] INFO:     Application startup complete.
+Tokenizer for /mnt/share/GLM-5.2-W4A8C8-A5-0731-copy is still TokenizersBackend after retries with --trust-remote-code. Model-specific tokenizer attributes may be missing.
+[2026-09-24 03:59:40] INFO:     127.0.0.1:33314 - "GET /model_info HTTP/1.1" 200 OK
+[2026-09-24 03:59:40] Router registered worker IPC: ipc:///tmp/tmpp284wu09 (total: 2)
+[2026-09-24 03:59:40] INFO:     Application startup complete.
+Tokenizer for /mnt/share/GLM-5.2-W4A8C8-A5-0731-copy is still TokenizersBackend after retries with --trust-remote-code. Model-specific tokenizer attributes may be missing.
+[2026-09-24 03:59:41] Router registered worker IPC: ipc:///tmp/tmpn6uguy3y (total: 3)
+[2026-09-24 03:59:41] INFO:     127.0.0.1:33320 - "GET /model_info HTTP/1.1" 200 OK
+[2026-09-24 03:59:42] INFO:     Application startup complete.
+[2026-09-24 03:59:43] INFO:     127.0.0.1:33326 - "GET /model_info HTTP/1.1" 200 OK
+[2026-09-24 03:59:45] INFO:     Started server process [10293]
+[2026-09-24 03:59:45] INFO:     Waiting for application startup.
+[2026-09-24 03:59:45] INFO:     Start multi-tokenizer worker process 10293, ipc_name=ipc:///tmp/tmppy11q3k4
+Tokenizer for /mnt/share/GLM-5.2-W4A8C8-A5-0731-copy is still TokenizersBackend after retries with --trust-remote-code. Model-specific tokenizer attributes may be missing.
+[2026-09-24 03:59:51] Router registered worker IPC: ipc:///tmp/tmppy11q3k4 (total: 4)
+[2026-09-24 03:59:51] INFO:     Application startup complete.
+[2026-09-24 03:59:52] INFO:     127.0.0.1:58052 - "GET /model_info HTTP/1.1" 200 OK
+[2026-09-24 04:00:15 DP0 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5142, in run_scheduler_process
     scheduler.run_event_loop()
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
     dispatch_event_loop(self)
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4990, in dispatch_event_loop
     scheduler.event_loop_overlap()
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
     return func(*args, **kwargs)
@@ -30,9 +73,9 @@ Tokenizer for /mnt/share/GLM-5.2-W4A8C8-A5-0731-copy is still TokenizersBackend 
   File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3097, in get_next_batch_to_run
-    ret = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3208, in get_next_batch_to_run
+    new_batch = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(new_batch)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 435, in maybe_prepare_mlp_sync_batch
     batch = self.prepare_mlp_sync_batch(batch)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -48,14 +91,14 @@ Tokenizer for /mnt/share/GLM-5.2-W4A8C8-A5-0731-copy is still TokenizersBackend 
            ^^^^^^^^^^^^^^^^^^^^^
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4132, in all_gather_into_tensor
     work.wait()
-RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [141.61.73.105]:40676
+RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [141.61.73.105]:33967
 
-[2026-09-24 03:49:17 DP0 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+[2026-09-24 04:00:15 DP0 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5142, in run_scheduler_process
     scheduler.run_event_loop()
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
     dispatch_event_loop(self)
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4990, in dispatch_event_loop
     scheduler.event_loop_overlap()
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
     return func(*args, **kwargs)
@@ -66,9 +109,9 @@ RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connect
   File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3097, in get_next_batch_to_run
-    ret = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3208, in get_next_batch_to_run
+    new_batch = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(new_batch)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 435, in maybe_prepare_mlp_sync_batch
     batch = self.prepare_mlp_sync_batch(batch)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,14 +127,14 @@ RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connect
            ^^^^^^^^^^^^^^^^^^^^^
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4132, in all_gather_into_tensor
     work.wait()
-RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [141.61.73.105]:53889
+RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [141.61.73.105]:33493
 
-[2026-09-24 03:49:19 DP0 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+[2026-09-24 04:00:25 DP0 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5142, in run_scheduler_process
     scheduler.run_event_loop()
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
     dispatch_event_loop(self)
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4990, in dispatch_event_loop
     scheduler.event_loop_overlap()
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
     return func(*args, **kwargs)
@@ -102,9 +145,9 @@ RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connect
   File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3097, in get_next_batch_to_run
-    ret = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3208, in get_next_batch_to_run
+    new_batch = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(new_batch)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 435, in maybe_prepare_mlp_sync_batch
     batch = self.prepare_mlp_sync_batch(batch)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -120,19 +163,52 @@ RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connect
            ^^^^^^^^^^^^^^^^^^^^^
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4132, in all_gather_into_tensor
     work.wait()
-RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [141.61.73.103]:26011
+RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [141.61.73.103]:65190
+
+[2026-09-24 04:00:25 DP0 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5142, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4990, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1801, in event_loop_overlap
+    plan = self.get_next_batch_to_run(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3208, in get_next_batch_to_run
+    new_batch = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(new_batch)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 435, in maybe_prepare_mlp_sync_batch
+    batch = self.prepare_mlp_sync_batch(batch)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 406, in prepare_mlp_sync_batch
+    return prepare_mlp_sync_batch_raw(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 343, in prepare_mlp_sync_batch_raw
+    mlp_sync_info.all_gather(
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 160, in all_gather
+    torch.distributed.all_gather_into_tensor(
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4132, in all_gather_into_tensor
+    work.wait()
+RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [141.61.73.103]:691
+
+[2026-09-24 04:00:27] Subprocess scheduler_0 (pid=7572) crashed with exit code -3. Triggering SIGQUIT for cleanup...
 
 
-
-105：
-[2026-09-24 03:48:08 DP1 TP14 EP14] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
-[2026-09-24 03:48:08 DP1 TP15 EP15] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
-[2026-09-24 03:48:08 DP1 TP9 EP9] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
-[2026-09-24 03:48:08 DP1 TP13 EP13] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
-[2026-09-24 03:48:08 DP1 TP11 EP11] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
-[2026-09-24 03:48:08 DP1 TP12 EP12] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
-[2026-09-24 03:48:08 DP1 TP8 EP8] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
-[2026-09-24 03:48:08 DP1 TP10 EP10] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+105:
+[2026-09-24 03:59:21 DP1 TP15 EP15] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 03:59:21 DP1 TP9 EP9] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 03:59:21 DP1 TP13 EP13] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 03:59:21 DP1 TP11 EP11] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
 ================= [DEBUG] 决定是否打印profiling=================================
 ================= [DEBUG] 决定是否打印profiling=================================
 ================= [DEBUG] 决定是否打印profiling=================================
@@ -141,26 +217,26 @@ RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connect
 ================= [DEBUG] 决定是否打印profiling=================================
 ================= [DEBUG] 决定是否打印profiling=================================
 ================= [DEBUG] 决定是否打印profiling=================================
-[2026-09-24 03:48:09] Dummy health check server started in background thread at 0.0.0.0:30000
+[2026-09-24 03:59:22] Dummy health check server started in background thread at 0.0.0.0:30000
 terminate called after throwing an instance of 'gloo::EnforceNotMet'
-  what():  [enforce fail at /pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:456] op.preamble.length <= op.nbytes. 2363433839688981134 vs 8. Received data size doesn't match expected size. Is there a distributed collective mismatch in your code?
+  what():  [enforce fail at /pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:456] op.preamble.length <= op.nbytes. 393669554616900903 vs 8. Received data size doesn't match expected size. Is there a distributed collective mismatch in your code?
 Fatal Python error: Aborted
 
-Thread 0x0000fff85ffef100 (most recent call first):
+Thread 0x0000fff86ffef100 (most recent call first):
   File "/home/y00951466/sglang/python/sglang/srt/utils/watchdog.py", line 147 in _watchdog_once
   File "/home/y00951466/sglang/python/sglang/srt/utils/watchdog.py", line 127 in _watchdog_thread
   File "/usr/local/python3.12.13/lib/python3.12/threading.py", line 1012 in run
   File "/usr/local/python3.12.13/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
   File "/usr/local/python3.12.13/lib/python3.12/threading.py", line 1032 in _bootstrap
 
-Thread 0x0000fff883fff100 (most recent call first):
+Thread 0x0000fff897fff100 (most recent call first):
   File "/usr/local/python3.12.13/lib/python3.12/threading.py", line 359 in wait
   File "/usr/local/python3.12.13/lib/python3.12/threading.py", line 655 in wait
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/tqdm/_monitor.py", line 69 in run
   File "/usr/local/python3.12.13/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
   File "/usr/local/python3.12.13/lib/python3.12/threading.py", line 1032 in _bootstrap
 
-Thread 0x0000ffff88772080 (most recent call first):
+Thread 0x0000ffff8ebc6080 (most recent call first):
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 2913 in broadcast
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 83 in wrapper
   File "/home/y00951466/sglang/python/sglang/srt/utils/common.py", line 2319 in broadcast_pyobj
@@ -169,9 +245,9 @@ Thread 0x0000ffff88772080 (most recent call first):
   File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109 in wrapper
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1795 in event_loop_overlap
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124 in decorate_context
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985 in dispatch_event_loop
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4990 in dispatch_event_loop
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689 in run_event_loop
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137 in run_scheduler_process
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5142 in run_scheduler_process
   File "/usr/local/python3.12.13/lib/python3.12/multiprocessing/process.py", line 108 in run
   File "/usr/local/python3.12.13/lib/python3.12/multiprocessing/process.py", line 314 in _bootstrap
   File "/usr/local/python3.12.13/lib/python3.12/multiprocessing/spawn.py", line 135 in _main
@@ -179,12 +255,12 @@ Thread 0x0000ffff88772080 (most recent call first):
   File "<string>", line 1 in <module>
 
 Extension modules: numpy._core._multiarray_umath, numpy.linalg._umath_linalg, psutil._psutil_linux, pybase64._pybase64, charset_normalizer.md, charset_normalizer.cd, requests.packages.charset_normalizer.md, requests.packages.chardet.md, requests.packages.charset_normalizer.cd, requests.packages.chardet.cd, torch._C, torch._C._dynamo.autograd_compiler, torch._C._dynamo.eval_frame, torch._C._dynamo.guards, torch._C._dynamo.utils, torch._C._fft, torch._C._linalg, torch._C._nested, torch._C._nn, torch._C._sparse, torch._C._special, torch_npu._C, numpy.random._common, numpy.random.bit_generator, numpy.random._bounded_integers, numpy.random._mt19937, numpy.random.mtrand, numpy.random._philox, numpy.random._pcg64, numpy.random._sfc64, numpy.random._generator, markupsafe._speedups, yaml._yaml, PIL._imaging, PIL._imagingft, av._core, av.logging, av.buffer, av.audio.format, av.error, av.dictionary, av.container.pyio, av.format, av.index, av.utils, av.stream, av.container.streams, av.sidedata.encparams, av.sidedata.motionvectors, av.sidedata.sidedata, av.opaque, av.rational, av.packet, av.container.input, av.bitstream, av.container.output, av.container.core, av.codec.context, av.video.format, av.video.reformatter, av.plane, av.video.plane, av.video.frame, av.video.stream, av.codec.hwaccel, av.codec.codec, av.frame, av.audio.layout, av.audio.plane, av.audio.frame, av.audio.stream, av.filter.link, av.filter.context, av.filter.graph, av.filter.filter, av.filter.loudnorm, av.audio.resampler, av.audio.codeccontext, av.audio.fifo, av.device, av.video.codeccontext, regex._regex, _cffi_backend, scipy._lib._ccallback_c, scipy.linalg._fblas, scipy.linalg._flapack, scipy.linalg.cython_lapack, scipy.linalg._cythonized_array_utils, scipy.linalg._solve_toeplitz, scipy.linalg._decomp_lu_cython, scipy.linalg._matfuncs_sqrtm_triu, scipy.linalg.cython_blas, scipy.linalg._matfuncs_expm, scipy.linalg._decomp_update, scipy.sparse._sparsetools, _csparsetools, scipy.sparse._csparsetools, scipy.sparse.linalg._dsolve._superlu, scipy.sparse.linalg._eigen.arpack._arpack, scipy.sparse.linalg._propack._spropack, scipy.sparse.linalg._propack._dpropack, scipy.sparse.linalg._propack._cpropack, scipy.sparse.linalg._propack._zpropack, scipy.sparse.csgraph._tools, scipy.sparse.csgraph._shortest_path, scipy.sparse.csgraph._traversal, scipy.sparse.csgraph._min_spanning_tree, scipy.sparse.csgraph._flow, scipy.sparse.csgraph._matching, scipy.sparse.csgraph._reordering, scipy.optimize._minpack2, scipy.optimize._group_columns, scipy._lib.messagestream, scipy.optimize._trlib._trlib, scipy.optimize._lbfgsb, _moduleTNC, scipy.optimize._moduleTNC, scipy.optimize._cobyla, scipy.optimize._slsqp, scipy.optimize._minpack, scipy.optimize._lsq.givens_elimination, scipy.optimize._zeros, scipy.optimize._highs.cython.src._highs_wrapper, scipy.optimize._highs._highs_wrapper, scipy.optimize._highs.cython.src._highs_constants, scipy.optimize._highs._highs_constants, scipy.linalg._interpolative, scipy.optimize._bglu_dense, scipy.optimize._lsap, scipy.spatial._ckdtree, scipy.spatial._qhull, scipy.spatial._voronoi, scipy.spatial._distance_wrap, scipy.spatial._hausdorff, scipy.special._ufuncs_cxx, scipy.special._cdflib, scipy.special._ufuncs, scipy.special._specfun, scipy.special._comb, scipy.special._ellip_harm_2, scipy.spatial.transform._rotation, scipy.optimize._direct, multidict._multidict, yarl._quoting_c, propcache._helpers_c, aiohttp._http_writer, aiohttp._http_parser, aiohttp._websocket.mask, aiohttp._websocket.reader_c, frozenlist._frozenlist, msgspec._core, zmq.backend.cython._zmq, tvm_ffi.core, lxml._elementpath, lxml.etree, setproctitle._setproctitle, cython.cimports.libc.math, Cython.Utils, Cython.Plex.Actions, Cython.Plex.Transitions, Cython.Plex.Machines, Cython.Plex.DFA, Cython.Plex.Scanners, Cython.Compiler.Scanning, Cython.StringIOTree, Cython.Compiler.Code, google._upb._message, pyarrow.lib, _cyutility, pandas._libs._cyutility, pandas._libs.tslibs.ccalendar, pandas._libs.tslibs.np_datetime, pandas._libs.tslibs.dtypes, pandas._libs.tslibs.base, pandas._libs.tslibs.nattype, pandas._libs.tslibs.timezones, pandas._libs.properties, pandas._libs.tslibs.fields, pandas._libs.tslibs.timedeltas, pandas._libs.tslibs.tzconversion, pandas._libs.tslibs.timestamps, pandas._libs.tslibs.offsets, pandas._libs.tslibs.strptime, pandas._libs.tslibs.parsing, pandas._libs.tslibs.conversion, pandas._libs.tslibs.period, pandas._libs.tslibs.vectorized, pandas._libs.ops_dispatch, pandas._libs.missing, pandas._libs.hashtable, pandas._libs.algos, pandas._libs.interval, pandas._libs.lib, pyarrow._compute, pandas._libs.ops, pandas._libs.hashing, pandas._libs.arrays, pandas._libs.tslib, pandas._libs.sparse, pandas._libs.internals, pandas._libs.indexing, pandas._libs.index, pandas._libs.writers, pandas._libs.join, pandas._libs.window.aggregations, pandas._libs.window.indexers, pandas._libs.reshape, pandas._libs.groupby, pandas._libs.json, pandas._libs.parsers, pandas._libs.testing, pyarrow._acero, pyarrow._fs, pyarrow._csv, pyarrow._json, pyarrow._substrait, pyarrow._dataset, pyarrow._dataset_orc, pyarrow._parquet, pyarrow._azurefs, pyarrow._hdfs, pyarrow._gcsfs, pyarrow._s3fs, pyarrow._parquet_encryption, pyarrow._dataset_parquet_encryption, pyarrow._dataset_parquet, xxhash._xxhash, npu_utils, scipy.ndimage._nd_image, _ni_label, scipy.ndimage._ni_label, __triton_launcher (total: 232)
-[2026-09-24 03:49:02 DP1 TP10 EP10] Scheduler hit an exception: Traceback (most recent call last):
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+[2026-09-24 04:00:01 DP1 TP9 EP9] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5142, in run_scheduler_process
     scheduler.run_event_loop()
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
     dispatch_event_loop(self)
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4990, in dispatch_event_loop
     scheduler.event_loop_overlap()
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
     return func(*args, **kwargs)
@@ -195,9 +271,9 @@ Extension modules: numpy._core._multiarray_umath, numpy.linalg._umath_linalg, ps
   File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3097, in get_next_batch_to_run
-    ret = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3208, in get_next_batch_to_run
+    new_batch = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(new_batch)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 435, in maybe_prepare_mlp_sync_batch
     batch = self.prepare_mlp_sync_batch(batch)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -213,14 +289,14 @@ Extension modules: numpy._core._multiarray_umath, numpy.linalg._umath_linalg, ps
            ^^^^^^^^^^^^^^^^^^^^^
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4132, in all_gather_into_tensor
     work.wait()
-RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:538] Read error [141.61.73.105]:12161: Connection reset by peer
+RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:538] Read error [141.61.73.105]:9647: Connection reset by peer
 
-[2026-09-24 03:49:02 DP1 TP8 EP8] Scheduler hit an exception: Traceback (most recent call last):
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+[2026-09-24 04:00:01 DP1 TP11 EP11] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5142, in run_scheduler_process
     scheduler.run_event_loop()
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
     dispatch_event_loop(self)
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4990, in dispatch_event_loop
     scheduler.event_loop_overlap()
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
     return func(*args, **kwargs)
@@ -231,9 +307,9 @@ RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:538] Read er
   File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3097, in get_next_batch_to_run
-    ret = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3208, in get_next_batch_to_run
+    new_batch = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(new_batch)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 435, in maybe_prepare_mlp_sync_batch
     batch = self.prepare_mlp_sync_batch(batch)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -249,14 +325,14 @@ RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:538] Read er
            ^^^^^^^^^^^^^^^^^^^^^
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4132, in all_gather_into_tensor
     work.wait()
-RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:538] Read error [141.61.73.105]:12161: Connection reset by peer
+RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:538] Read error [141.61.73.105]:9647: Connection reset by peer
 
-[2026-09-24 03:49:13 DP1 TP11 EP11] Scheduler hit an exception: Traceback (most recent call last):
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+[2026-09-24 04:00:11 DP1 TP8 EP8] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5142, in run_scheduler_process
     scheduler.run_event_loop()
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
     dispatch_event_loop(self)
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4990, in dispatch_event_loop
     scheduler.event_loop_overlap()
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
     return func(*args, **kwargs)
@@ -267,9 +343,9 @@ RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:538] Read er
   File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3097, in get_next_batch_to_run
-    ret = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3208, in get_next_batch_to_run
+    new_batch = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(new_batch)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 435, in maybe_prepare_mlp_sync_batch
     batch = self.prepare_mlp_sync_batch(batch)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -285,10 +361,46 @@ RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:538] Read er
            ^^^^^^^^^^^^^^^^^^^^^
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4132, in all_gather_into_tensor
     work.wait()
-RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [141.61.73.105]:62115
+RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [141.61.73.105]:23783
 
-[2026-09-24 03:49:20] Scheduler or DataParallelController 73003 terminated with -3
-[2026-09-24 03:49:20] kill_process_tree called: parent_pid=72827, include_parent=False, pid=72827
+[2026-09-24 04:00:13 DP1 TP12 EP12] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5142, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4990, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1801, in event_loop_overlap
+    plan = self.get_next_batch_to_run(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3208, in get_next_batch_to_run
+    new_batch = self.dp_attn_adapter.maybe_prepare_mlp_sync_batch(new_batch)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 435, in maybe_prepare_mlp_sync_batch
+    batch = self.prepare_mlp_sync_batch(batch)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 406, in prepare_mlp_sync_batch
+    return prepare_mlp_sync_batch_raw(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 343, in prepare_mlp_sync_batch_raw
+    mlp_sync_info.all_gather(
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler_components/dp_attn.py", line 160, in all_gather
+    torch.distributed.all_gather_into_tensor(
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 83, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4132, in all_gather_into_tensor
+    work.wait()
+RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [141.61.73.105]:36743
+
+[2026-09-24 04:00:19] Scheduler or DataParallelController 75411 terminated with -3
+[2026-09-24 04:00:19] kill_process_tree called: parent_pid=75235, include_parent=False, pid=75235
 Error in sys.excepthook:
 Traceback (most recent call last):
   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 121, in _excepthook
@@ -314,4 +426,4 @@ Traceback (most recent call last):
     "startup_time": tokenizer_manager.startup_time,
                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'NoneType' object has no attribute 'startup_time'
-[ERROR] 2026-09-24-03:49:21 (PID:72827, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+[ERROR] 2026-09-24-04:00:19 (PID:75235, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
