@@ -265,7 +265,6 @@ PY
                 --tp-size ${TP_SIZE} \
                 --dp ${DP_SIZE} \
                 --enable-dp-attention \
-                --enable-dp-attention-local-control-broadcast \
                 \
                 --moe-dense-tp-size 1 \
                 --load-balance-method round_robin \
