@@ -17,7 +17,7 @@ unset ASCEND_LAUNCH_BLOCKING
 
 export ENABLE_PROFILING=0
 export PROFILING_BS=5
-export PROFILING_STAGE="decode" # "decode" # "prefill"
+export PROFILING_STAGE="prefill" # "decode" # "prefill"
 export PROFILING_step=5
 
 # export PYTHONPATH=/mnt/share/l00951279/sglang/python:$PYTHONPATH
@@ -84,7 +84,7 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --attention-backend ascend \
 --device npu \
 --watchdog-timeout 9000 \
---max-running-requests 36 \
+--max-running-requests 120 \
 --mem-fraction-static 0.8 \
 --quantization modelslim \
 --max-prefill-tokens 2048000 \
@@ -93,18 +93,22 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --cuda-graph-bs 8 \
 --load-balance-method round_robin \
 --speculative-algorithm EAGLE \
---speculative-num-steps 3 \
+--speculative-num-steps 4 \
 --speculative-eagle-topk 1 \
---speculative-num-draft-tokens 4 \
+--speculative-num-draft-tokens 5 \
 --speculative-draft-kv-cache-dtype bf16 \
 --kv-cache-dtype "fp8_e4m3" \
 --enable-hierarchical-cache \
 --hicache-io-backend kernel_ascend \
 --enable-cache-report \
 --hicache-size 60 \
---enable-nsa-prefill-context-parallel \
---dsa-prefill-cp-mode in-seq-split \
---attn-cp-size 8
+--dp-size 4 \
+--enable-dp-attention
+
+
+# --enable-nsa-prefill-context-parallel \
+# --dsa-prefill-cp-mode in-seq-split \
+# --attn-cp-size 8
 
 # --moe-dense-tp-size 1 \
 # --moe-a2a-backend deepep \

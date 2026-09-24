@@ -2,17 +2,17 @@
 set -euo pipefail
 
 # ==================== 主要配置 ====================
-HOST="141.61.94.111"
+HOST="0.0.0.0"
 PORT=30000
-KV_CACHE_HIT_RATE=0.90                 # 0~1；0.90=90%，1.0=原参考的全共享前缀
-MODEL="/mnt/share/recipes/kimi/kimi_k3_27"
-CONCURRENCY=1000                       # 正式压测的客户端并发上限
+KV_CACHE_HIT_RATE=0.50                 # 0~1；0.90=90%，1.0=原参考的全共享前缀
+MODEL="/mnt/share/GLM-5.2-W4A8C8-A5-0731-copy"
+CONCURRENCY=32                       # 正式压测的客户端并发上限
 
 # ==================== 测试规模 ====================
-INPUT_LEN=140000                       # 目标总输入长度：共享前缀 + 独立问题
+INPUT_LEN=128000                       # 目标总输入长度：共享前缀 + 独立问题
 OUTPUT_LEN=1024
-NUM_REQUESTS=64                        # 正式压测总请求数，与并发上限不同
-CACHE_REQUESTS=4                       # 创建缓存阶段的请求数和并发上限
+NUM_REQUESTS=96                       # 正式压测总请求数，与并发上限不同
+CACHE_REQUESTS=8                       # 创建缓存阶段的请求数和并发上限
 
 # 每次运行使用新种子，减少复用上轮问题缓存的干扰；两阶段共用它。
 SEED=$(python -c 'import secrets; print(secrets.randbits(32))')

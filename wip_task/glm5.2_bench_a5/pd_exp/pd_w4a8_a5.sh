@@ -71,7 +71,9 @@ export HCCL_HOST_SOCKET_PORT_RANGE=auto
 # A5 PD 分离
 # ================================================================
 export MF_HYBM_USE_VMM_SEGMENT=1
-export ASCEND_MF_TRANSFER_PROTOCOL="device_urma"
+
+export ASCEND_MF_TRANSFER_PROTOCOL="device_uboe"
+export ASCEND_GLOBAL_RESOURCE_CONFIG='{"comm_resource_config.protocol_desc":["uboe:device"]}'
 
 # P 节点作为 MemFabric Store
 export ASCEND_MF_STORE_URL="tcp://141.61.73.103:31001"
@@ -209,7 +211,7 @@ for i in "${!P_IPS[@]}"; do
     export SGLANG_SCHEDULER_SKIP_ALL_GATHER=1
 
     export SGLANG_HICACHE_HYBM_RESERVE_GB=80
-    export SGLANG_HICACHE_IO_ASCENDC=1
+    export SGLANG_HICACHE_IO_ASCENDC=0
     export SGLANG_HICACHE_HOST_MEM=hybm
 
     LOG_FILE="${LOG_DIR}/prefill.log"

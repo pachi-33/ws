@@ -1,0 +1,773 @@
+103：
+[2026-09-24 02:50:27 DP0 TP6 EP6] Capture target verify NPU graph begin. backend=full, num_tokens_per_req=6, bs=[8], avail mem=18.67 GB
+[2026-09-24 02:50:27 DP0 TP1 EP1] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:27 DP0 TP1 EP1] Capture target verify NPU graph begin. backend=full, num_tokens_per_req=6, bs=[8], avail mem=18.66 GB
+Capturing batches (bs=8 avail_mem=18.34 GB):   0%|                                                                                         | 0/1 [00:00<?, ?it/s][rank2]:[W924 02:50:28.071272000 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank6]:[W924 02:50:29.132062930 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank3]:[W924 02:50:29.140151150 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank5]:[W924 02:50:29.145327860 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank7]:[W924 02:50:29.186709990 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank1]:[W924 02:50:29.187031300 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank0]:[W924 02:50:29.201003270 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank4]:[W924 02:50:29.271007210 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[2026-09-24 02:50:29 DP0 TP2 EP2] Disable CP decode attention TP
+[2026-09-24 02:50:29 DP0 TP2 EP2] get env SGLANG_NPU_USE_MLAPO = 1
+[2026-09-24 02:50:29 DP0 TP3 EP3] Disable CP decode attention TP
+[2026-09-24 02:50:29 DP0 TP3 EP3] get env SGLANG_NPU_USE_MLAPO = 1
+[2026-09-24 02:50:29 DP0 TP1 EP1] Disable CP decode attention TP
+[2026-09-24 02:50:29 DP0 TP1 EP1] get env SGLANG_NPU_USE_MLAPO = 1
+[2026-09-24 02:50:29 DP0 TP6 EP6] Disable CP decode attention TP
+[2026-09-24 02:50:29 DP0 TP6 EP6] get env SGLANG_NPU_USE_MLAPO = 1
+[2026-09-24 02:50:29 DP0 TP5 EP5] Disable CP decode attention TP
+[2026-09-24 02:50:29 DP0 TP5 EP5] get env SGLANG_NPU_USE_MLAPO = 1
+[2026-09-24 02:50:29 DP0 TP7 EP7] Disable CP decode attention TP
+[2026-09-24 02:50:29 DP0 TP7 EP7] get env SGLANG_NPU_USE_MLAPO = 1
+[2026-09-24 02:50:29 DP0 TP0 EP0] Disable CP decode attention TP
+[2026-09-24 02:50:29 DP0 TP0 EP0] get env SGLANG_NPU_USE_MLAPO = 1
+[2026-09-24 02:50:29 DP0 TP4 EP4] Disable CP decode attention TP
+[2026-09-24 02:50:29 DP0 TP4 EP4] get env SGLANG_NPU_USE_MLAPO = 1
+Capturing batches (bs=8 avail_mem=18.34 GB): 100%|█████████████████████████████████████████████████████████████████████████████████| 1/1 [00:04<00:00,  4.03s/it]
+[2026-09-24 02:50:32 DP0 TP4 EP4] Capture target verify NPU graph end. elapsed=4.83 s, mem usage=7.94 GB, avail mem=10.73 GB.
+[2026-09-24 02:50:32 DP0 TP4 EP4] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:32 DP0 TP0 EP0] Capture target verify NPU graph end. elapsed=4.84 s, mem usage=7.94 GB, avail mem=10.46 GB.
+[2026-09-24 02:50:32 DP0 TP0 EP0] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:32 DP0 TP0 EP0] Capture draft decode CUDA graph begin. backend=full, num_tokens_per_req=1, bs=[8], avail mem=10.46 GB
+[2026-09-24 02:50:32 DP0 TP3 EP3] Capture target verify NPU graph end. elapsed=4.83 s, mem usage=7.94 GB, avail mem=10.73 GB.
+[2026-09-24 02:50:32 DP0 TP3 EP3] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:32 DP0 TP1 EP1] Capture target verify NPU graph end. elapsed=4.70 s, mem usage=7.94 GB, avail mem=10.73 GB.
+[2026-09-24 02:50:32 DP0 TP1 EP1] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:32 DP0 TP7 EP7] Capture target verify NPU graph end. elapsed=5.20 s, mem usage=7.94 GB, avail mem=10.73 GB.
+[2026-09-24 02:50:32 DP0 TP7 EP7] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:32 DP0 TP2 EP2] Capture target verify NPU graph end. elapsed=5.14 s, mem usage=7.94 GB, avail mem=10.73 GB.
+[2026-09-24 02:50:32 DP0 TP2 EP2] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:32 DP0 TP6 EP6] Capture target verify NPU graph end. elapsed=4.91 s, mem usage=7.94 GB, avail mem=10.73 GB.
+[2026-09-24 02:50:32 DP0 TP6 EP6] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:32 DP0 TP5 EP5] Capture target verify NPU graph end. elapsed=5.10 s, mem usage=7.94 GB, avail mem=10.73 GB.
+[2026-09-24 02:50:32 DP0 TP5 EP5] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+Capturing batches (bs=8 avail_mem=10.44 GB): 100%|█████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.62it/s]
+[2026-09-24 02:50:33 DP0 TP0 EP0] Capture draft decode CUDA graph end. elapsed=1.44 s, mem usage=0.23 GB, avail mem=10.23 GB.
+[2026-09-24 02:50:33 DP0 TP0 EP0] Capture draft extend CUDA graph begin. backend=full, num_tokens_per_req=6, bs=[8], avail mem=10.23 GB
+Capturing batches (bs=8 avail_mem=10.21 GB): 100%|█████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.96it/s]
+[2026-09-24 02:50:35 DP0 TP7 EP7] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:35 DP0 TP1 EP1] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:35 DP0 TP0 EP0] Capture draft extend CUDA graph end. elapsed=1.32 s, mem usage=0.16 GB, avail mem=10.07 GB.
+[2026-09-24 02:50:35 DP0 TP2 EP2] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:35 DP0 TP0 EP0] max_total_num_tokens=816512, chunked_prefill_size=8192, max_prefill_tokens=16384, max_running_requests=18, context_len=153600, available_gpu_mem=10.07 GB
+[2026-09-24 02:50:35 DP0 TP0 EP0] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:35 DP0 TP6 EP6] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:35 DP0 TP4 EP4] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:35 DP0 TP3 EP3] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:35 DP0 TP5 EP5] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+[2026-09-24 02:50:35 DP0 TP4 EP4] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:35 DP0 TP2 EP2] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:35 DP0 TP6 EP6] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:35 DP0 TP4 EP4] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:35 DP0 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:35 DP0 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+[2026-09-24 02:50:36 DP0 TP5 EP5] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:36 DP0 TP3 EP3] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:36 DP0 TP0 EP0] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:36 DP0 TP1 EP1] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:36 DP0 TP7 EP7] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:36 DP0 TP5 EP5] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:36 DP0 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:36 DP0 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:36 DP0 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:36 DP0 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:47] kill_process_tree called: parent_pid=86780, include_parent=False, pid=86780
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 121, in _excepthook
+    self._origin_excepthook(exc_type, exc, *args)
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 121, in _excepthook
+    self._origin_excepthook(exc_type, exc, *args)
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 121, in _excepthook
+    self._origin_excepthook(exc_type, exc, *args)
+  [Previous line repeated 997 more times]
+RecursionError: maximum recursion depth exceeded
+
+Original exception was:
+Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/entrypoints/engine.py", line 1776, in _wait_for_scheduler_ready
+    data = scheduler_pipe_readers[i].recv()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/y00951466/sglang/python/sglang/launch_server.py", line 71, in <module>
+    run_server(server_args)
+  File "/home/y00951466/sglang/python/sglang/launch_server.py", line 52, in run_server
+    launch_server(server_args)
+  File "/home/y00951466/sglang/python/sglang/srt/entrypoints/http_server.py", line 2749, in launch_server
+    ) = Engine._launch_subprocesses(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/entrypoints/engine.py", line 1213, in _launch_subprocesses
+    scheduler_init_result.wait_for_ready()
+  File "/home/y00951466/sglang/python/sglang/srt/entrypoints/engine.py", line 940, in wait_for_ready
+    infos = _wait_for_scheduler_ready(scheduler_pipe_readers, scheduler_procs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/entrypoints/engine.py", line 1778, in _wait_for_scheduler_ready
+    raise _scheduler_died_error(i, scheduler_procs[i])
+RuntimeError: Rank 0 scheduler died during initialization (exit code: -3). If exit code is -9 (SIGKILL), a common cause is the OS OOM killer. Run `dmesg -T | grep -i oom` to check.
+[ERROR] 2026-09-24-02:50:47 (PID:86780, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+root@worker-103:/workspace# 
+
+
+
+
+105：
+[2026-09-24 02:50:35 DP1 TP13 EP13] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:35 DP1 TP14 EP14] Capture target verify NPU graph end. elapsed=5.11 s, mem usage=7.94 GB, avail mem=10.69 GB.
+[2026-09-24 02:50:35 DP1 TP14 EP14] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:35 DP1 TP11 EP11] Capture target verify NPU graph end. elapsed=5.10 s, mem usage=7.94 GB, avail mem=10.72 GB.
+[2026-09-24 02:50:35 DP1 TP11 EP11] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:35 DP1 TP15 EP15] Capture target verify NPU graph end. elapsed=5.16 s, mem usage=7.94 GB, avail mem=10.72 GB.
+[2026-09-24 02:50:35 DP1 TP15 EP15] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:35 DP1 TP9 EP9] Capture target verify NPU graph end. elapsed=5.23 s, mem usage=7.94 GB, avail mem=10.72 GB.
+[2026-09-24 02:50:35 DP1 TP9 EP9] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:35 DP1 TP10 EP10] Capture target verify NPU graph end. elapsed=5.20 s, mem usage=7.94 GB, avail mem=10.72 GB.
+[2026-09-24 02:50:35 DP1 TP10 EP10] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:35 DP1 TP8 EP8] Capture target verify NPU graph end. elapsed=5.26 s, mem usage=7.94 GB, avail mem=10.45 GB.
+[2026-09-24 02:50:35 DP1 TP8 EP8] Disable prefill CUDA graph because cuda_graph_config resolved prefill.backend='disabled' (e.g. via --cuda-graph-backend-prefill=disabled or auto-disable rules).
+[2026-09-24 02:50:38 DP1 TP12 EP12] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:38 DP1 TP14 EP14] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:38 DP1 TP13 EP13] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:38 DP1 TP11 EP11] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:38 DP1 TP15 EP15] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:38 DP1 TP10 EP10] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:38 DP1 TP8 EP8] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+[2026-09-24 02:50:38 DP1 TP9 EP9] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+================= [DEBUG] 决定是否打印profiling=================================
+[2026-09-24 02:50:39 DP1 TP12 EP12] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:39 DP1 TP13 EP13] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:39 DP1 TP9 EP9] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:39 DP1 TP8 EP8] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:39 DP1 TP11 EP11] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:39 DP1 TP10 EP10] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:39 DP1 TP14 EP14] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:39 DP1 TP15 EP15] get env SGLANG_SCHEDULER_SKIP_ALL_GATHER = 1
+[2026-09-24 02:50:39] Dummy health check server started in background thread at 0.0.0.0:30000
+[2026-09-24 02:50:39 DP1 TP14 EP14] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:39 DP1 TP13 EP13] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:39 DP1 TP12 EP12] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:39 DP1 TP15 EP15] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:39 DP1 TP10 EP10] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:39 DP1 TP11 EP11] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:39 DP1 TP8 EP8] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:39 DP1 TP9 EP9] Scheduler hit an exception: Traceback (most recent call last):
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 5137, in run_scheduler_process
+    scheduler.run_event_loop()
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1689, in run_event_loop
+    dispatch_event_loop(self)
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 4985, in dispatch_event_loop
+    scheduler.event_loop_overlap()
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 1840, in event_loop_overlap
+    batch_result = self.run_batch(batch)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/utils/nvtx_utils.py", line 109, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/managers/scheduler.py", line 3776, in run_batch
+    batch_result = self.model_worker.forward_batch_generation(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 1404, in forward_batch_generation
+    verify_input: EagleVerifyInput = self.draft_worker.draft(batch)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 501, in draft
+    forward_batch, can_run_decode_cuda_graph = prepare_for_draft(
+                                               ^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_worker_common.py", line 310, in prepare_for_draft
+    can_run_decode_cuda_graph = cuda_graph_runner and cuda_graph_runner.can_run_graph(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py", line 67, in can_run_graph
+    can_run_graph = super().can_run_graph(forward_batch)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/y00951466/sglang/python/sglang/srt/speculative/eagle_draft_cuda_graph_runner.py", line 309, in can_run_graph
+    cuda_graph_bs = max(forward_batch.original_global_num_tokens_cpu)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+[2026-09-24 02:50:57] Scheduler or DataParallelController 63548 terminated with -3
+[2026-09-24 02:50:57] kill_process_tree called: parent_pid=63372, include_parent=False, pid=63372
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 121, in _excepthook
+    self._origin_excepthook(exc_type, exc, *args)
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 121, in _excepthook
+    self._origin_excepthook(exc_type, exc, *args)
+  File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py", line 121, in _excepthook
+    self._origin_excepthook(exc_type, exc, *args)
+  [Previous line repeated 997 more times]
+RecursionError: maximum recursion depth exceeded
+
+Original exception was:
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/y00951466/sglang/python/sglang/launch_server.py", line 71, in <module>
+    run_server(server_args)
+  File "/home/y00951466/sglang/python/sglang/launch_server.py", line 52, in run_server
+    launch_server(server_args)
+  File "/home/y00951466/sglang/python/sglang/srt/entrypoints/http_server.py", line 2770, in launch_server
+    _setup_and_run_http_server(
+  File "/home/y00951466/sglang/python/sglang/srt/entrypoints/http_server.py", line 2534, in _setup_and_run_http_server
+    "startup_time": tokenizer_manager.startup_time,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'startup_time'
+[ERROR] 2026-09-24-02:50:58 (PID:63372, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+root@worker-105:/workspace# 
